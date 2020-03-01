@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">sendismapp</string>
+    <string name="username_es">Nombre de ususario</string>
 </resources>
