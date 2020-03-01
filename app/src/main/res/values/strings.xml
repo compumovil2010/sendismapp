@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">sendismapp</string>
+    <string name="textoEstrellas">¿Te gustó esta ruta?</string>
 </resources>
