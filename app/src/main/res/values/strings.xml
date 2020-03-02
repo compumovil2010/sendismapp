@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">sendismapp</string>
     <string name="textoEstrellas">¿Te gustó esta ruta?</string>
+    <string name="cbZonaDescanso">Zona de descanso</string>
+    <string name="cbMirador">Mirador</string>
+    <string name="cbHidratacion">Hidratación</string>
+    <string name="cbZonaCompleja">Zona compleja</string>
+
 </resources>

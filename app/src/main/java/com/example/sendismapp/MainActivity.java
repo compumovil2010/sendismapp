@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //startActivity(new Intent(this,Calificacion.class)); //vistaCalificacion
+        //startActivity(new Intent(this,FiltrosBusqueda.class));//vistaFiltros
 
     }
 }
