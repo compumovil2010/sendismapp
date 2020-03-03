@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">sendismapp</string>
+    <string name="username_es">Nombre de ususario</string>
+    <string name="create_new_route">Crear nueva ruta</string>
+    <string name="travel_route">Recorrer una ruta</string>
+    <string name="view_on_maps">Ver en google maps</string>
+
+    <string name="example_interest_description">esta es la descripcion de un lugar de interes. la descripcion dice algo sobre el lugar y es interesante</string>
 </resources>
