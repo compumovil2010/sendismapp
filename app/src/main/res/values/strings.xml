@@ -7,4 +7,12 @@
 
     <string name="example_interest_description">esta es la descripcion de un lugar de interes. la descripcion dice algo sobre el lugar y es interesante</string>
     <string name="textoEstrellas">¿Te gustó esta ruta?</string>
+    <string-array name="distancias">
+        <item>1 m</item>
+        <item>2 m</item>
+        <item>3 m</item>
+        <item>4 m</item>
+        <item>5 m</item>
+        <item>6 m</item>
+    </string-array>
 </resources>
