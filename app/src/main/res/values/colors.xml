@@ -6,4 +6,5 @@
     <color name="textColorLight">#AAAAAA</color>
     <color name="texts">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="emptyStar">#000000</color>
 </resources>

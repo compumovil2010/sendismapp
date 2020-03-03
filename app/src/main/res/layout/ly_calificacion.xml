@@ -26,7 +26,7 @@
         android:numStars="5"
         android:stepSize="1"
         android:rating="1"
-        android:progressBackgroundTint="@color/estrellaVacia"
+        android:progressBackgroundTint="@color/emptyStar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
