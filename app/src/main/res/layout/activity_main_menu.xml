@@ -17,13 +17,13 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="100sp"
+            android:layout_height="200dp"
             android:layout_above="@+id/button_create_route"
             android:layout_centerHorizontal="true"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:scaleX="1"
             android:scaleY="1"
-            app:srcCompat="@mipmap/sendismap_logo_foreground" />
+            app:srcCompat="@drawable/logo" />
 
         <Button
             android:id="@+id/button_create_route"

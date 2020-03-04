@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        /*Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Bienvenido a SendisMapp");
     }
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     public void editarRuta(View v)
     {
         Intent intent = new Intent(MainActivity.this, EditarRuta.class);
+        startActivity(intent);*/
+        Intent intent = new Intent(MainActivity.this, NewUserActivity.class);
         startActivity(intent);
     }
 }

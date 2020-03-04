@@ -25,7 +25,7 @@
             android:scaleType="centerInside"
             android:scaleX="1"
             android:scaleY="1"
-            app:srcCompat="@drawable/Logo" />
+            app:srcCompat="@drawable/logo" />
     <EditText
         android:id="@+id/edit_text_username"
         android:layout_width="match_parent"
