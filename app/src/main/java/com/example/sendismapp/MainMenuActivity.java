@@ -30,7 +30,7 @@ public class MainMenuActivity extends AppCompatActivity {
         botonRecorrer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenuActivity.this, EditarRuta.class);
+                Intent intent = new Intent(MainMenuActivity.this, ActivityVerRutas.class);
                 startActivity(intent);
             }
         });

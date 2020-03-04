@@ -15,6 +15,14 @@
         <item>5 m</item>
         <item>6 m</item>
     </string-array>
+
+    <string-array name="Rutas">
+        <item>Monserrate</item>
+        <item>Guadalupe</item>
+        <item>Choachi</item>
+        <item>Sibate</item>
+        <item>Chia</item>
+    </string-array>
     <string name="botonCalificacion">Click en ruta</string>
 
     <string name="labelCompartir">Compartir Ruta</string>
