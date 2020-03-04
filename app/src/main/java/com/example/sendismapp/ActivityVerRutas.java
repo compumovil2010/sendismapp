@@ -26,9 +26,11 @@ public class ActivityVerRutas extends AppCompatActivity {
         arreglo[3]= "Sibate";
         arreglo[4]= "Facatativa";
 
-        botonBuscar = findViewById(R.id.idBotonBuscar);
-        botonEditar = findViewById(R.id.idBotonEditar);
+
         setContentView(R.layout.activity_ver_rutas);
+
+        botonBuscar = findViewById(R.id.idBotonBuscarRutas );
+        botonEditar = findViewById(R.id.idBotonEditarRutas);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,arreglo);
         ListView listView = (ListView) findViewById(R.id.idListaRutas);
@@ -42,22 +44,22 @@ public class ActivityVerRutas extends AppCompatActivity {
             }
         });
 
-        /*botonBuscar.setOnClickListener(new View.OnClickListener() {
+        botonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ver = new Dialog(ActivityVerRutas.this);
                 ver.setContentView(R.layout.ly_filtros_busqueda);
                 ver.show();
             }
-        });*/
+        });
 
-        /*botonEditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityVerRutas.this, EditarRuta.class);
-                startActivity(intent);
-            }
-        });*/
+       botonEditar.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(ActivityVerRutas.this, EditarRuta.class);
+               startActivity(intent);
+           }
+       });
 
 
     }
