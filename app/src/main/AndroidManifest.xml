@@ -17,6 +17,7 @@
         <activity android:name=".Calificacion"></activity>
         <activity android:name=".CrearRuta"></activity>
         <activity android:name=".EditarRuta" />
+        <activity android:name=".FiltrosBusqueda"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
