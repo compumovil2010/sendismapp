@@ -15,8 +15,20 @@
         <item>5 m</item>
         <item>6 m</item>
     </string-array>
+    <string name="botonCalificacion">Click en ruta</string>
+
     <string name="labelCompartir">Compartir Ruta</string>
     <string name="labelIngresar">Ingresar titulo de la ruta</string>
+    <string name="labelDescripcion">Descripcion</string>
+    <string name="botonCompartir">Compartir</string>
+    <string name="botonCancelar">Cancelar</string>
+
+    <string name="labelCrearRuta">Frecuencia en toma de datos</string>
+    <string name="botonGuardar">Guardar</string>
+
+    <string name="labelEditarRuta">Marcadores:</string>
+
+    <string name="labelInterestPoint">Arbol de interes</string>
 
 
 </resources>

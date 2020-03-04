@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
-                android:text="Arbol de interes"
+                android:text="@string/labelInterestPoint"
                 android:layout_alignParentLeft="true"
                 android:layout_toLeftOf="@id/image_button_share"
                 android:textColor="@color/texts"/>
