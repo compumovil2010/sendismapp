@@ -9,7 +9,7 @@
 
     <ListView
         android:id="@+id/idListaRutas"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="653dp"
         android:background="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,10 +20,11 @@
 
     <TextView
         android:id="@+id/idRuta"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Rutas"
         android:textSize="25sp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/idListaRutas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

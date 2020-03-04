@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/idTextCompartir"
-        android:layout_width="470dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
-        android:text="Compartir Ruta"
+        android:text="@string/labelCompartir"
         android:gravity="center"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,14 +31,15 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="339dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="25sp"
+        android:layout_width="362dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/borde_redondo"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idIngresar" />
 
@@ -67,9 +68,9 @@
 
     <Button
         android:id="@+id/idBotonCompartir"
-        android:layout_width="163dp"
+        android:layout_width="148dp"
         android:layout_height="42dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="32dp"
         android:text="Compartir"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +79,7 @@
     <Button
         android:id="@+id/idBotonCancelar"
         android:layout_width="148dp"
-        android:layout_height="44dp"
+        android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:text="Cancelar"
         app:layout_constraintEnd_toEndOf="parent"
