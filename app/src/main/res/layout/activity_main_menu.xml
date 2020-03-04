@@ -21,9 +21,9 @@
             android:layout_above="@+id/button_create_route"
             android:layout_centerHorizontal="true"
             android:scaleType="center"
-            android:scaleX="3"
-            android:scaleY="3"
-            app:srcCompat="@mipmap/ic_launcher_foreground" />
+            android:scaleX="1"
+            android:scaleY="1"
+            app:srcCompat="@mipmap/Sendismap_logo_foreground" />
 
         <Button
             android:id="@+id/button_create_route"
