@@ -17,4 +17,9 @@
     </string-array>
     <string name="labelCompartir">Compartir Ruta</string>
 
+    <string name="cbZonaDescanso">Zona de descanso</string>
+    <string name="cbMirador">Mirador</string>
+    <string name="cbHidratacion">Hidratación</string>
+    <string name="cbZonaCompleja">Zona compleja</string>
+
 </resources>
