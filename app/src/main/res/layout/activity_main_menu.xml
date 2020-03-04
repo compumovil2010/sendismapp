@@ -23,7 +23,7 @@
             android:scaleType="center"
             android:scaleX="1"
             android:scaleY="1"
-            app:srcCompat="@mipmap/Sendismap_logo_foreground" />
+            app:srcCompat="@mipmap/sendismap_logo_foreground" />
 
         <Button
             android:id="@+id/button_create_route"

@@ -16,6 +16,8 @@
         <item>6 m</item>
     </string-array>
     <string name="labelCompartir">Compartir Ruta</string>
+    <string name="labelIngresar">Ingresar titulo de la ruta</string>
+
 
     <string name="cbZonaDescanso">Zona de descanso</string>
     <string name="cbMirador">Mirador</string>
