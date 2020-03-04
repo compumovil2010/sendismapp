@@ -16,5 +16,7 @@
         <item>6 m</item>
     </string-array>
     <string name="labelCompartir">Compartir Ruta</string>
+    <string name="labelIngresar">Ingresar titulo de la ruta</string>
+
 
 </resources>
