@@ -8,4 +8,10 @@
         <item>5 m</item>
         <item>6 m</item>
     </string-array>
+    <string name="btnLogin">LOGIN</string>
+    <string name="btnRegis">REGISTRARSE</string>
+    <string name="tfUserName">Nombre de usuairo</string>
+    <string name="tfPassword">Contraseña</string>
+    <string name="btnIngresar">Ingresar</string>
+
 </resources>

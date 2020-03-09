@@ -27,4 +27,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, EditarRuta.class);
         startActivity(intent);
     }
+    public void verLogin(View v)
+    {
+        Intent intent = new Intent(MainActivity.this, Login.class);
+        startActivity(intent);
+    }
+    public void verRegistrarse(View v)
+    {
+        Intent intent = new Intent(MainActivity.this, EditarRuta.class);
+        startActivity(intent);
+    }
 }
