@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".PerfilActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/image_view_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_alignParentTop="true"
+            app:srcCompat="@mipmap/profile_example" />
+
+        <EditText
+            android:id="@+id/edit_text_username_profile"
+            android:layout_below="@id/image_view_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username_es"
+            android:text="lumig"
+            />
+        <EditText
+            android:id="@+id/edit_text_name_profile"
+            android:layout_below="@id/edit_text_username_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_es"
+            android:text="Luis Miguel"/>
+
+        <TextView
+            android:id="@+id/text_view_age"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:text="@string/age_es"
+            android:layout_below="@id/edit_text_name_profile"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/text_view_weight"/>
+
+        <EditText
+            android:id="@+id/edit_text_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/age_es"
+            android:text="28"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/edit_text_name_profile"
+            android:layout_alignLeft="@id/seek_bar_weight"/>
+
+<!--weight_______________________________________________________-->
+
+        <TextView
+            android:id="@+id/text_view_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weight_es"
+            android:layout_marginEnd="60sp"
+            android:layout_below="@id/edit_text_age"/>
+        <TextView
+            android:id="@+id/text_view_weight_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40sp"
+            android:text="54"
+            android:layout_alignTop="@id/text_view_weight"
+            android:layout_toRightOf="@id/text_view_weight"/>
+        <SeekBar
+            android:id="@+id/seek_bar_weight"
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/text_view_weight"
+            android:layout_toRightOf="@id/text_view_weight_display"
+            android:layout_alignParentRight="true"
+            />
+
+
+<!--height_______________________________________________________-->
+
+
+        <TextView
+            android:id="@+id/text_view_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/experience_es"
+            android:layout_below="@id/text_view_weight_display"/>
+        <TextView
+            android:id="@+id/text_view_height_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40sp"
+            android:text="5"
+            android:layout_below="@id/text_view_weight_display"
+            android:layout_alignLeft="@id/text_view_weight_display"/>
+        <SeekBar
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_weight_display"
+            android:layout_alignLeft="@id/seek_bar_weight"
+            android:layout_alignParentRight="true"
+            />
+
+<!--experience_______________________________________________________-->
+
+        <TextView
+            android:id="@+id/text_view_experience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/experience_es"
+            android:layout_below="@id/text_view_height_display"/>
+        <TextView
+            android:id="@+id/text_view_experience_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40sp"
+            android:text="5"
+            android:layout_below="@id/text_view_height_display"
+            android:layout_alignLeft="@id/text_view_height_display"/>
+        <SeekBar
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_height_display"
+            android:layout_alignLeft="@id/seek_bar_weight"
+            android:layout_alignParentRight="true"
+            />
+
+
+        <Button
+            android:id="@+id/button_apply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_es"
+            android:layout_below="@id/text_view_experience"
+            android:layout_marginBottom="10sp"
+            android:layout_marginTop="10sp"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_apply"
+            android:text="@string/change_password_es"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

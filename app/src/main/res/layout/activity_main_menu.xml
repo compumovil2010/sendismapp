@@ -21,9 +21,9 @@
             android:layout_above="@+id/button_create_route"
             android:layout_centerHorizontal="true"
             android:scaleType="centerInside"
-            android:scaleX="1"
-            android:scaleY="1"
-            app:srcCompat="@drawable/logo" />
+            android:scaleX="2"
+            android:scaleY="2"
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
 
         <Button
             android:id="@+id/button_create_route"
