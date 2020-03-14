@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //startActivity(new Intent(this,Calificacion.class)); //vistaCalificacion
         //startActivity(new Intent(this,BuscarRutas.class));//vistaFiltros
-        startActivity(new Intent(this,Comentario.class)); //vistaComentario
+        //startActivity(new Intent(this,Comentario.class)); //vistaComentario
     }
 }
