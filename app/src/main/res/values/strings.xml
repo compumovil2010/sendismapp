@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">sendismapp</string>
     <string name="textoEstrellas">¿Te gustó esta ruta?</string>
+    <string name="tvEligeDificultad">¿Cómo te pareció esta ruta?</string>
     <string name="rbFacil">Fácil</string>
     <string name="rbMedio">Medio</string>
     <string name="rbDificil">Difícil</string>
+    <string name="btHacerCalificacion">Calificar</string>
 
     <string name="etLugar">Lugar</string>
     <string name="etDistancia">Distancia (Km)</string>
@@ -15,7 +17,10 @@
     <string name="cbHidratacion">Hidratación</string>
     <string name="cbMirador">Mirador</string>
     <string name="btBuscarRutas">Buscar Rutas</string>
-    <string name="tvEligeDificultad">¿Cómo te pareció esta ruta?</string>
+
+
+    <string name="btAnadirImagen">Imagen</string>
+    <string name="btComentar">Comentar</string>
 
 
 </resources>

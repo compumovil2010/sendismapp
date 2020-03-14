@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BuscarRutas"></activity>
+        <activity android:name=".Comentario"></activity>
+        <activity android:name=".BuscarRutas" />
         <activity android:name=".Calificacion" />
         <activity android:name=".MainActivity">
             <intent-filter>

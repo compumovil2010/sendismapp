@@ -16,7 +16,7 @@ public class Calificacion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /////
+
         ver = new Dialog(this);
         ver.setContentView(R.layout.ly_calificacion);
         califica = ver.findViewById(R.id.estrellas);
