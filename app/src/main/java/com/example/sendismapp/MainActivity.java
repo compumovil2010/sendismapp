@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void verRegistrarse(View v)
     {
-        Intent intent = new Intent(MainActivity.this, EditarRuta.class);
+        Intent intent = new Intent(MainActivity.this, Registrarse.class);
         startActivity(intent);
     }
 }
