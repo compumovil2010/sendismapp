@@ -12,6 +12,7 @@
     <string name="age_es">Edad</string>
     <string name="apply_es">Aplicar</string>
     <string name="change_password_es">Cambiar clave</string>
+    <string name="distance_es">Distancia</string>
     <string-array name="distancias">
         <item>1 m</item>
         <item>2 m</item>
