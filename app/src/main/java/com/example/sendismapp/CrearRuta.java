@@ -1,6 +1,8 @@
 package com.example.sendismapp;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -10,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 public class CrearRuta extends AppCompatActivity {
 
     private Spinner spnDistancias;
-
+    private Dialog dialogPupUp;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,6 +29,12 @@ public class CrearRuta extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDistancias.setAdapter(adapter);
 
+        dialogPupUp = new Dialog(this);
+    }
 
+    public void popUpInfoMarcadores(View v)
+    {
+        dialogPupUp.setContentView(R.layout.pop_up_info_marcadores);
+        dialogPupUp.show();
     }
 }
