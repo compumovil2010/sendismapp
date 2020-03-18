@@ -7,6 +7,7 @@
     <string name="expIconoAgua">Use este icono para marcar un punto en el recorrido que sea ideal para rehidratarse</string>
     <string name="expIconoFoto">Use este icono para marcar un punto en el recorrido que sea ideal para tomar una fotografía</string>
     <string name="expIconoCamara">Use este icono para activar la cámara y tomar una foto relacionada con el punto de interés</string>
+    <string name="expIconoBateria">Use este icono para marcar un punto en el recorrido que sea ideal para recuperar energía</string>
     <string-array name="distancias">
         <item>1 m</item>
         <item>2 m</item>

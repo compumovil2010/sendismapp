@@ -5,7 +5,7 @@
     android:id="@+id/popUpMarcadores"
     android:orientation="vertical"
     android:layout_width="320dp"
-    android:layout_height="475dp"
+    android:layout_height="575dp"
     android:background="@color/colorSecondary"
     android:padding="5dp"
     android:layout_gravity="center">
@@ -72,6 +72,23 @@
         android:textColor="@color/blanco"
         android:gravity="center"
         android:text="@string/expIconoFoto" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/icons8_charged_battery_128px_1" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blanco"
+        android:gravity="center"
+        android:text="@string/expIconoBateria" />
 
     <ImageButton
         android:id="@+id/imgBTomarFoto3"
