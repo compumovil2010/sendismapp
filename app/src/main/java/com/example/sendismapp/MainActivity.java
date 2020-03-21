@@ -16,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Bienvenido a SendisMapp");
+
+        //startActivity(new Intent(this,Calificacion.class)); //vistaCalificacion
+        //startActivity(new Intent(this,BuscarRutas.class));//vistaFiltros
+        //startActivity(new Intent(this,Comentario.class)); //vistaComentario
     }
     public void crearRuta(View v)
     {

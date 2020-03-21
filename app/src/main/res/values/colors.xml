@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#3b5998</color>
-    <color name="colorAccent">#000000</color>
     <color name="colorSecondary">#3b5998</color>
+    <color name="colorAccent">#03ACCA</color>
     <color name="texts">#000000</color>
     <color name="blanco">#FFFFFF</color>
+
+    <color name="estrellaVacia">#000000</color>
 </resources>

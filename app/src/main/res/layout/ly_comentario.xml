@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    tools:context=".Comentario">
+
+    <EditText
+        android:id="@+id/etComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="12"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btAnadirImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btAnadirImagen"
+        app:layout_constraintStart_toStartOf="@id/etComentario"
+        app:layout_constraintTop_toBottomOf="@id/etComentario" />
+
+    <Button
+        android:id="@+id/btComentar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btComentar"
+        app:layout_constraintEnd_toEndOf="@id/etComentario"
+        app:layout_constraintTop_toBottomOf="@id/etComentario" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

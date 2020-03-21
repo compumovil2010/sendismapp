@@ -9,10 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- Manifest Johan -->
         <activity android:name=".Registrarse"></activity>
         <activity android:name=".Login" />
         <activity android:name=".CrearRuta" />
         <activity android:name=".EditarRuta" />
+        <!-- Manifest Diego -->
+        <activity android:name=".Comentario"></activity>
+        <activity android:name=".BuscarRutas" />
+        <activity android:name=".Calificacion" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
