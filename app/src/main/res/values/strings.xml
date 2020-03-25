@@ -9,6 +9,21 @@
     <string name="expIconoFoto">Use este icono para marcar un punto en el recorrido que sea ideal para tomar una fotografía</string>
     <string name="expIconoCamara">Use este icono para activar la cámara y tomar una foto relacionada con el punto de interés</string>
     <string name="expIconoBateria">Use este icono para marcar un punto en el recorrido que sea ideal para recuperar energía</string>
+    <string name="username_es">Nombre de ususario</string>
+    <string name="create_new_route">Crear nueva ruta</string>
+    <string name="travel_route">Recorrer una ruta</string>
+    <string name="view_on_maps">Ver en google maps</string>
+    <string name="name_es">Nombre</string>
+    <string name="example_interest_description">esta es la descripcion de un lugar de interes. la descripcion dice algo sobre el lugar y es interesante</string>
+    <string name="textoEstrellas">¿Te gustó esta ruta?</string>
+    <string name="weight_es">Peso:</string>
+    <string name="experience_es">Experiencia</string>
+    <string name="age_es">Edad</string>
+    <string name="apply_es">Aplicar</string>
+    <string name="change_password_es">Cambiar clave</string>
+    <string name="distance_es">Distancia</string>
+    <string name="difficulty_es">Dificultad</string>
+    <string name="route_es">Ruta</string>
     <string-array name="distancias">
         <item>1 m</item>
         <item>2 m</item>
@@ -60,6 +75,30 @@
     <string name="etCalificacion">Calificación</string>
     <string name="etTiempo">Tiempo recorrido (Min)</string>
     <string name="tvPuntosInteres">Puntos de interés</string>
+
+    <string-array name="Rutas">
+        <item>Monserrate</item>
+        <item>Guadalupe</item>
+        <item>Choachi</item>
+        <item>Sibate</item>
+        <item>Chia</item>
+    </string-array>
+    <string name="botonCalificacion">Click en ruta</string>
+
+    <string name="labelCompartir">Compartir Ruta</string>
+    <string name="labelIngresar">Ingresar titulo de la ruta</string>
+    <string name="labelDescripcion">Descripcion</string>
+    <string name="botonCompartir">Compartir</string>
+    <string name="botonCancelar">Cancelar</string>
+
+    <string name="labelCrearRuta">Frecuencia en toma de datos</string>
+    <string name="botonGuardar">Guardar</string>
+
+    <string name="labelEditarRuta">Marcadores:</string>
+
+    <string name="labelInterestPoint">Arbol de interes</string>
+
+
     <string name="cbZonaDescanso">Zona de descanso</string>
     <string name="cbZonaCompleja">Zona compleja</string>
     <string name="cbHidratacion">Hidratación</string>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InterestPointActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10sp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/text_view_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="@string/labelInterestPoint"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/image_button_share"
+                android:textColor="@color/texts"/>
+
+            <ImageButton
+                android:id="@+id/image_button_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@android:drawable/ic_menu_share" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/image_view_interest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative_layout_top"
+            android:adjustViewBounds="true"
+            app:srcCompat="@mipmap/arbol_interes" />
+        
+        <TextView
+            android:id="@+id/text_view_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_view_interest"
+            android:text="@string/example_interest_description"
+            android:textColor="@color/texts"
+            android:background="@color/white"
+            android:padding="20sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_below="@id/text_view_description"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_on_maps"
+                android:textColor="@color/texts"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

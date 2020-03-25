@@ -5,7 +5,13 @@
     <color name="colorPrimaryDark">#3b5998</color>
     <color name="colorSecondary">#3b5998</color>
     <color name="colorAccent">#03ACCA</color>
+    <color name="colorPrimary">#055AC1</color>
+    <color name="colorPrimaryDark">#0013BA</color>
+    <color name="colorAccent">#06BA6C</color>
+    <color name="textColorLight">#AAAAAA</color>
     <color name="texts">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="emptyStar">#000000</color>
     <color name="blanco">#FFFFFF</color>
 
     <color name="estrellaVacia">#000000</color>

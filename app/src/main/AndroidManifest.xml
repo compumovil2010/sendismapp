@@ -26,6 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ResultRoutesActivity"></activity>
+        <activity android:name=".InformacionRutaActivity" />
+        <activity android:name=".PerfilActivity" />
+        <activity android:name=".verRuta" />
+        <activity android:name=".InterestPointActivity" />
     </application>
 
 </manifest>
