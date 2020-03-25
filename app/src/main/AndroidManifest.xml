@@ -13,22 +13,7 @@
         <activity android:name=".InformacionRutaActivity" />
         <activity android:name=".PerfilActivity" />
         <activity android:name=".verRuta" />
-        <activity android:name=".ActivityVerRutas" />
-        <activity android:name=".ActivityCompartirRuta" />
         <activity android:name=".InterestPointActivity" />
-        <activity android:name=".MainMenuActivity" />
-        <activity android:name=".NewUserActivity" />
-        <activity android:name=".Calificacion" />
-        <activity android:name=".CrearRuta" />
-        <activity android:name=".EditarRuta" />
-        <activity android:name=".FiltrosBusqueda" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
