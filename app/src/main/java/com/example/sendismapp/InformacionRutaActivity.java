@@ -2,7 +2,10 @@ package com.example.sendismapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -35,4 +38,11 @@ public class InformacionRutaActivity extends AppCompatActivity {
 
         lv.setAdapter(arrayAdapter);
     }
+
+    public void verEditarRuta(View v)
+    {
+        Intent intent = new Intent(InformacionRutaActivity.this, EditarRuta.class);
+        startActivity(intent);
+    }
+
 }

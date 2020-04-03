@@ -63,7 +63,6 @@
     <!-- =========== -->
 
     <!-- String Diego -->
-    <string name="textoEstrellas">¿Te gustó esta ruta?</string>
     <string name="tvEligeDificultad">¿Cómo te pareció esta ruta?</string>
     <string name="rbFacil">Fácil</string>
     <string name="rbMedio">Medio</string>

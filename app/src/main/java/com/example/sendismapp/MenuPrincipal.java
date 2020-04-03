@@ -31,7 +31,8 @@ public class MenuPrincipal extends AppCompatActivity {
         botonBuscarRuta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MenuPrincipal.this,BuscarRutas.class);
+                startActivity(intent);
             }
         });
         botonVerMisRutas.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +46,8 @@ public class MenuPrincipal extends AppCompatActivity {
         botonCrearRutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MenuPrincipal.this,CrearRuta.class);
+                startActivity(intent);
             }
         });
         botonHistorialRutas.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +67,8 @@ public class MenuPrincipal extends AppCompatActivity {
         botonVerPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MenuPrincipal.this,PerfilActivity.class);
+                startActivity(intent);
             }
         });
         botonVerNotificaciones.setOnClickListener(new View.OnClickListener() {

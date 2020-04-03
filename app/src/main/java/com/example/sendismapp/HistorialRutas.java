@@ -1,5 +1,6 @@
 package com.example.sendismapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,14 +23,16 @@ public class HistorialRutas extends AppCompatActivity {
         botonCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(HistorialRutas.this, Calificacion.class);
+                startActivity(intent);
             }
         });
 
         botonComentar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(HistorialRutas.this, Comentario.class);
+                startActivity(intent);
             }
         });
 

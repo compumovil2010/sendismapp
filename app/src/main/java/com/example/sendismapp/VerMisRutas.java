@@ -1,5 +1,6 @@
 package com.example.sendismapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,8 @@ public class VerMisRutas extends AppCompatActivity {
         botonEmpezar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(VerMisRutas.this, HacerRecorrido.class);
+                startActivity(intent);
             }
         });
     }
