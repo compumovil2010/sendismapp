@@ -28,8 +28,8 @@ public class HistorialRuta {
     @Override
     public String toString() {
         return
-                "Nombre : " + nombre + '\'' +
-                "Descripción='" + descripcion + '\''
+                "Nombre : " + nombre + '\n' +
+                "Descripción='" + descripcion
                 ;
     }
 }
