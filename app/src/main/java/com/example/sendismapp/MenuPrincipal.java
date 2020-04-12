@@ -2,6 +2,7 @@ package com.example.sendismapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MenuPrincipal extends AppCompatActivity {
 
@@ -23,6 +25,7 @@ public class MenuPrincipal extends AppCompatActivity {
     private Button botonVerNotificaciones;
     private FirebaseAuth mAuth;
     private Toolbar toolbar;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +97,20 @@ public class MenuPrincipal extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         if(toolbar!=null)setSupportActionBar(toolbar);
+
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        currentUser = mAuth.getCurrentUser();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        toolbar = null;
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.cerrar_sesion, menu);
@@ -103,20 +119,22 @@ public class MenuPrincipal extends AppCompatActivity {
 
     public void setSupportActionBar(Toolbar myToolbar) {
         toolbar.setTitle("Menu principal");
-        toolbar.inflateMenu(R.menu.cerrar_sesion);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.itemCerrarSesion) {
-                    mAuth.signOut();
-                    Intent intent = new Intent(MenuPrincipal.this , MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    return true;
+        if (currentUser != null){
+            toolbar.inflateMenu(R.menu.cerrar_sesion);
+            toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    if (item.getItemId() == R.id.itemCerrarSesion) {
+                        mAuth.signOut();
+                        Intent intent = new Intent(MenuPrincipal.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
+            });
+        }
     }
 
 }

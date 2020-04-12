@@ -19,9 +19,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Bienvenido a SendisMapp");
 
-        //startActivity(new Intent(this,Calificacion.class)); //vistaCalificacion
-        //startActivity(new Intent(this,BuscarRutas.class));//vistaFiltros
-        //startActivity(new Intent(this,Comentario.class)); //vistaComentario
     }
 
     public void crearRuta(View v)
@@ -42,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     public void verRegistrarse(View v)
     {
         Intent intent = new Intent(MainActivity.this, Registrarse.class);
+        startActivity(intent);
+    }
+
+    public void clickDeUnaAlMenu(View v) {
+        Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
         startActivity(intent);
     }
 }

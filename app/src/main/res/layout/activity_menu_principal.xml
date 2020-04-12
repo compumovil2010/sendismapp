@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.sendismapp.MenuPrincipal">
 
-    <include layout="@layout/toolbar">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar">
 
     </include>
 
@@ -15,21 +17,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:background="@color/colorSecondary"
         android:text="Buscar Ruta"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <Button
         android:id="@+id/buttonVerRutas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:text="Ver Mis Rutas"
         android:background="@color/colorSecondary"
@@ -42,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:text="Crear Ruta"
         android:background="@color/colorSecondary"
@@ -55,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:text="Historial de Rutas"
         android:background="@color/colorSecondary"
@@ -68,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:text="Buscar un Amigo"
         android:background="@color/colorSecondary"
@@ -81,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:text="Ver Perfil"
         android:background="@color/colorSecondary"
@@ -94,7 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:text="Ver Notifiaciones"
         android:background="@color/colorSecondary"
