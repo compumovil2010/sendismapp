@@ -48,22 +48,19 @@
         android:id="@+id/imgEstadoFisico"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRepetirP"
-        app:srcCompat="@drawable/salud" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEdad"
+        app:srcCompat="@drawable/salud"
+        tools:layout_editor_absoluteX="3dp" />
 
     <TextView
         android:id="@+id/txtVInfoEstadoFisico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Información de esado físico"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="25dp"
-        android:textStyle="bold"
-        android:textSize="17sp"
         android:textColor="#458A13"
+        android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtRepetirP" />
 
@@ -74,9 +71,8 @@
         android:text="@string/txtVExperiencia"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgEstadoFisico" />
+        app:layout_constraintTop_toBottomOf="@+id/txtVInfoEstadoFisico" />
 
     <Spinner
         android:id="@+id/spnExperiencia"
@@ -140,14 +136,12 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnResgistrarse"
-        android:layout_marginTop="15dp"
+        android:layout_width="135dp"
+        android:layout_height="38dp"
         android:background="@color/colorSecondary"
+        android:text="@string/btnResgistrarse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtEdad" />
+        app:layout_constraintTop_toBottomOf="@+id/edtRepetirP" />
 
     <ImageView
         android:id="@+id/imgPerfil"

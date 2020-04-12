@@ -5,7 +5,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.View;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(new Intent(this,BuscarRutas.class));//vistaFiltros
         //startActivity(new Intent(this,Comentario.class)); //vistaComentario
     }
+
     public void crearRuta(View v)
     {
         Intent intent = new Intent(MainActivity.this, CrearRuta.class);

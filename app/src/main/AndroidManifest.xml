@@ -14,6 +14,7 @@
         <activity android:name=".Login" />
         <activity android:name=".CrearRuta" />
         <activity android:name=".EditarRuta" />
+        <activity android:name=".MenuPrincipal" />
         <!-- Manifest Diego -->
         <activity android:name=".Comentario"></activity>
         <activity android:name=".BuscarRutas" />

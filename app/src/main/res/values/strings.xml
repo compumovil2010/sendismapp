@@ -15,7 +15,6 @@
     <string name="view_on_maps">Ver en google maps</string>
     <string name="name_es">Nombre</string>
     <string name="example_interest_description">esta es la descripcion de un lugar de interes. la descripcion dice algo sobre el lugar y es interesante</string>
-    <string name="textoEstrellas">¿Te gustó esta ruta?</string>
     <string name="weight_es">Peso:</string>
     <string name="experience_es">Experiencia</string>
     <string name="age_es">Edad</string>
@@ -40,7 +39,7 @@
     /*Cadenas para la vista de Registrarse*/
     <string name="btnLogin">LOGIN</string>
     <string name="btnRegis">REGISTRARSE</string>
-    <string name="tfUserName">Nombre de usuairo</string>
+    <string name="tfCorreo">Correo</string>
     <string name="tfPassword">Contraseña</string>
     <string name="btnIngresar">Ingresar</string>
     <string name="txtFNombre">Nombre de usuario</string>
@@ -107,5 +106,6 @@
 
     <string name="btAnadirImagen">Imagen</string>
     <string name="btComentar">Comentar</string>
+    <string name="menuCerrarSesion">Cerrar sesión</string>
     <!-- =========== -->
 </resources>
