@@ -20,6 +20,20 @@
         <activity android:name=".BuscarRutas" />
         <activity android:name=".Calificacion" />
 
+        <!--Manifest Stiven-->
+        <activity android:name=".MenuPrincipal" />
+        <activity android:name=".VerMisRutas" />
+        <activity android:name=".HistorialRutas" />
+        <activity android:name=".HacerRecorrido" />
+
+        <!--Manifest Gustavo-->
+        <activity android:name=".ResultRoutesActivity"></activity>
+        <activity android:name=".InformacionRutaActivity" />
+        <activity android:name=".PerfilActivity" />
+        <activity android:name=".verRuta" />
+        <activity android:name=".InterestPointActivity" />
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,11 +41,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ResultRoutesActivity"></activity>
-        <activity android:name=".InformacionRutaActivity" />
-        <activity android:name=".PerfilActivity" />
-        <activity android:name=".verRuta" />
-        <activity android:name=".InterestPointActivity" />
     </application>
 
 </manifest>

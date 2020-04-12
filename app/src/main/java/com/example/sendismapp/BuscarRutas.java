@@ -17,6 +17,7 @@ public class BuscarRutas extends AppCompatActivity {
     }
 
     public void clickBuscarRutas(View v) {
-        //startActivity(new Intent(this, ResultadoBusqueda.class));
+        Intent intent = new Intent(BuscarRutas.this, ResultRoutesActivity.class);
+        startActivity(intent);
     }
 }
