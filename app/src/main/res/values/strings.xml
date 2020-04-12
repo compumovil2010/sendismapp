@@ -106,5 +106,6 @@
     <string name="btAnadirImagen">Imagen</string>
     <string name="btComentar">Comentar</string>
     <string name="menuCerrarSesion">Cerrar sesión</string>
+    <string name="textoEstrellas">¿Te gustó esta ruta?</string>
     <!-- =========== -->
 </resources>
