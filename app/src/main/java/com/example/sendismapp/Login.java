@@ -56,10 +56,10 @@ public class Login extends AppCompatActivity {
     }
     private boolean isEmailValid(String email, String password) {
         if (!email.contains("@") || !email.contains(".") || email.length() < 5){
-            correo.setError("Wrong email");
+            correo.setError("Correo inválido");
             return false;
         }else if(TextUtils.isEmpty(password)){
-            contrasena.setError("Wrong password");
+            contrasena.setError("Contraseña vacía");
             return false;
         }
         return true;

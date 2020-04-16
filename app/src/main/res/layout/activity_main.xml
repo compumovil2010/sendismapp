@@ -11,24 +11,6 @@
     <include layout="@layout/toolbar"
         android:id="@+id/toolbar"/>
 
-    <Button
-        android:id="@+id/btnProbarEdicion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="editarRuta"
-        android:text="Probar edición de ruta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnProbarCreacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="crearRuta"
-        android:text="Probar Creación Ruta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="200dp"

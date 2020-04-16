@@ -42,7 +42,7 @@
     <string name="tfCorreo">Correo</string>
     <string name="tfPassword">Contraseña</string>
     <string name="btnIngresar">Ingresar</string>
-    <string name="txtFNombre">Nombre de usuario</string>
+    <string name="txtFNombre">Nombre</string>
     <string name="txtFPassword">Contraseña</string>
     <string name="txtFPassword2">Repetir Contraseña</string>
     <string name="txtFdate">03/03/20</string>
@@ -50,7 +50,7 @@
     <string name="txtVKg">Kg</string>
     <string name="txtVAlt">Metros</string>
     <string name="btnResgistrarse">Registrarse</string>
-    <string name="txtVFotoPerfil">Foto de perfil</string>
+    <string name="txtVFotoPerfil">Sube foto de perfil</string>
     <string name="edtPeso">Peso</string>
     <string name="edtAltura">Altura</string>
     <string name="edtEdad">Edad</string>

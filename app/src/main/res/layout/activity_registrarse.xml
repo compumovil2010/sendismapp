@@ -8,39 +8,50 @@
     android:padding="10dp"
     tools:context=".Registrarse">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
-
     <EditText
-        android:id="@+id/edtNombreU"
-        android:layout_width="200dp"
+        android:id="@+id/etCorreoRegistro"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/txtFNombre"
-        android:layout_marginTop="25dp"
+        android:hint="@string/tfCorreo"
+        app:layout_constraintBottom_toTopOf="@+id/edtNombreU"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <EditText
+        android:id="@+id/edtNombreU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/txtFNombre"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro"/>
+
     <EditText
         android:id="@+id/edtPassword"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/txtFPassword"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtNombreU" />
 
     <EditText
         android:id="@+id/edtRepetirP"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
         android:hint="@string/txtFPassword2"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
@@ -48,9 +59,9 @@
         android:id="@+id/imgEstadoFisico"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtEdad"
-        app:srcCompat="@drawable/salud"
-        tools:layout_editor_absoluteX="3dp" />
+        app:srcCompat="@drawable/salud" />
 
     <TextView
         android:id="@+id/txtVInfoEstadoFisico"
@@ -140,16 +151,17 @@
         android:layout_height="38dp"
         android:background="@color/colorSecondary"
         android:text="@string/btnResgistrarse"
+        android:onClick="clickRegistrarse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRepetirP" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPerfil" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imgPerfil"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="5dp"
+        android:onClick="clickSubirFotoPerfil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edtPassword"
         app:layout_constraintTop_toBottomOf="@+id/txtVFotoPerfil"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
