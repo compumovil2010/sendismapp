@@ -131,7 +131,11 @@ public class Registrarse extends AppCompatActivity {
 
     private boolean contrasenaValida(String contra, String repe) {
         if (!contra.equals(repe)){
+            contrasena.setError("No coinciden");
             repetir.setError("No coinciden");
+            return false;
+        }else if(contra.length() < 6){
+            contrasena.setError("Debe tener al menos 6 caracteres");
             return false;
         }else if (TextUtils.isEmpty(contra)){
             contrasena.setError("No puede estar vacío");
@@ -230,11 +234,12 @@ public class Registrarse extends AppCompatActivity {
                         String eda = edad.getText().toString();
                         if (task.isSuccessful()) {
                             Log.i("Registro-Usuario", "Success");
+                            if(uriImagen==null)uriImagen="El usuario no guardo foto de perfil";
                             Usuario nuevo = new Usuario(cor,nom,con,spnExperiencia.getSelectedItem().toString(),uriImagen,Float.parseFloat(pes),Float.parseFloat(alt),Integer.parseInt(eda));
                             FirebaseUser user = mAuth.getCurrentUser();
                             myRef = database.getReference(PATH_USERS+user.getUid());
                             myRef.setValue(nuevo);
-                            guardarImagenPerfil(user.getUid());
+                            if(!uriImagen.equals("El usuario no guardo foto de perfil"))guardarImagenPerfil(user.getUid());
                             Toast.makeText(Registrarse.this, "Te has registrado satisfactoriamente",
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Registrarse.this, MenuPrincipal.class);

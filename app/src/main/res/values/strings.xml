@@ -47,12 +47,10 @@
     <string name="txtFPassword2">Repetir Contraseña</string>
     <string name="txtFdate">03/03/20</string>
     <string name="txtVExperiencia">Experiencia en actividades de senderismo: </string>
-    <string name="txtVKg">Kg</string>
-    <string name="txtVAlt">Metros</string>
     <string name="btnResgistrarse">Registrarse</string>
-    <string name="txtVFotoPerfil">Sube foto de perfil</string>
-    <string name="edtPeso">Peso</string>
-    <string name="edtAltura">Altura</string>
+    <string name="txtVFotoPerfil">Presiona para guardar foto de perfil</string>
+    <string name="edtPeso">Peso (Kg)</string>
+    <string name="edtAltura">Altura (Cm)</string>
     <string name="edtEdad">Edad</string>
     <string-array name="Esperiencias">
         <item>Principiante</item>

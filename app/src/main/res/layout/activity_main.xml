@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context=".MainActivity">
 
     <include layout="@layout/toolbar"
@@ -26,11 +25,14 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:background="@color/colorSecondary"
         android:text="@string/btnLogin"
         android:textSize="15sp"
         android:onClick="verLogin"
+        android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
@@ -42,6 +44,9 @@
         android:background="@color/colorSecondary"
         android:text="@string/btnRegis"
         android:textSize="15sp"
+        android:textColor="@color/blanco"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:onClick="verRegistrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

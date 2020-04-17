@@ -5,177 +5,154 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context=".Registrarse">
 
-    <EditText
-        android:id="@+id/etCorreoRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/tfCorreo"
-        app:layout_constraintBottom_toTopOf="@+id/edtNombreU"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/edtNombreU"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/txtFNombre"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro"/>
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"/>
 
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/txtFPassword"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNombreU" />
+            <TextView
+                android:id="@+id/txtVFotoPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:text="@string/txtVFotoPerfil"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/edtRepetirP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/txtFPassword2"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+            <ImageButton
+                android:id="@+id/imgPerfil"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:onClick="clickSubirFotoPerfil"
+                app:srcCompat="@android:drawable/ic_menu_camera" />
 
-    <ImageView
-        android:id="@+id/imgEstadoFisico"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtEdad"
-        app:srcCompat="@drawable/salud" />
+            <EditText
+                android:id="@+id/etCorreoRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:hint="@string/tfCorreo"
+                android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/edtNombreU"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:hint="@string/txtFNombre"
+                android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:inputType="textPassword"
+                android:hint="@string/txtFPassword" />
 
-    <TextView
-        android:id="@+id/txtVInfoEstadoFisico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Información de esado físico"
-        android:textColor="#458A13"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRepetirP" />
+            <EditText
+                android:id="@+id/edtRepetirP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:inputType="textPassword"
+                android:hint="@string/txtFPassword2" />
 
-    <TextView
-        android:id="@+id/txtVExperiencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtVExperiencia"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtVInfoEstadoFisico" />
+            <ImageView
+                android:id="@+id/imgEstadoFisico"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/salud" />
 
-    <Spinner
-        android:id="@+id/spnExperiencia"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtVExperiencia" />
+            <TextView
+                android:id="@+id/txtVInfoEstadoFisico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Información de esado físico"
+                android:textColor="#458A13"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/edtPeso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/edtPeso"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnExperiencia" />
+            <TextView
+                android:id="@+id/txtVExperiencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/txtVExperiencia"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txtVKg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtVKg"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/edtPeso"
-        app:layout_constraintTop_toBottomOf="@+id/spnExperiencia" />
+            <Spinner
+                android:id="@+id/spnExperiencia"
+                android:layout_width="230dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/edtAltura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/edtAltura"
-        android:inputType="number"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPeso" />
+            <EditText
+                android:id="@+id/edtPeso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:layout_gravity="center"
+                android:hint="@string/edtPeso"
+                android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/txtVMetros"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtVAlt"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/edtAltura"
-        app:layout_constraintTop_toBottomOf="@+id/edtPeso" />
+            <EditText
+                android:id="@+id/edtAltura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/edtAltura"
+                android:inputType="number"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp" />
 
-    <EditText
-        android:id="@+id/edtEdad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        android:hint="@string/edtEdad"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtAltura" />
+            <EditText
+                android:id="@+id/edtEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date"
+                android:hint="@string/edtEdad"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp" />
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="135dp"
+                android:layout_height="38dp"
+                android:background="@color/colorSecondary"
+                android:textColor="@color/blanco"
+                android:layout_gravity="center"
+                android:text="@string/btnResgistrarse"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:onClick="clickRegistrarse" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="135dp"
-        android:layout_height="38dp"
-        android:background="@color/colorSecondary"
-        android:text="@string/btnResgistrarse"
-        android:onClick="clickRegistrarse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPerfil" />
-
-    <ImageButton
-        android:id="@+id/imgPerfil"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="5dp"
-        android:onClick="clickSubirFotoPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtVFotoPerfil"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
-
-    <TextView
-        android:id="@+id/txtVFotoPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/txtVFotoPerfil"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

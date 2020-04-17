@@ -2,6 +2,7 @@ package com.example.sendismapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,6 +34,9 @@ public class Login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         correo = findViewById(R.id.correo);
         contrasena = findViewById(R.id.contrasena);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Ingresar");
     }
 
     @Override
