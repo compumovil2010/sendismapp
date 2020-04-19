@@ -22,7 +22,7 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:layout_alignParentTop="true"
-            app:srcCompat="@mipmap/profile_example" />
+            android:src="@mipmap/profile_example" />
 
         <EditText
             android:id="@+id/edit_text_username_profile"

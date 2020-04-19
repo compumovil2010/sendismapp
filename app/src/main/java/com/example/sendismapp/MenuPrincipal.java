@@ -59,7 +59,7 @@ public class MenuPrincipal extends AppCompatActivity {
         botonCrearRutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuPrincipal.this,CrearRuta.class);
+                Intent intent = new Intent(MenuPrincipal.this,Mapa_crear_ruta.class);
                 startActivity(intent);
             }
         });

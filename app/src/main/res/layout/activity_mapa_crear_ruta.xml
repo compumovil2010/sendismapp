@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="5dp"
-    tools:context=".CrearRuta">
+    android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
 
-    <include
+    <fragment
         android:id="@+id/mapa_crear"
-        layout="@layout/contenedor_mapa_crear_ruta"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".Mapa_crear_ruta"
+        tools:ignore="MissingConstraints"
+        tools:layout="@layout/activity_mapa_crear_ruta">
 
+        <EditText
+            android:id="@+id/edtBuscarDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/transparente1"
+            android:ems="10"
+            android:hint="Edita"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </fragment>
 
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:padding="10dp"
         android:text="Marcadores:"
         android:textColor="@color/texts"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -37,7 +49,7 @@
         android:id="@+id/imageView12"
         android:layout_width="55sp"
         android:layout_height="55sp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@+id/imageView13"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:src="@drawable/water" />
@@ -47,6 +59,7 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginTop="5dp"
+        android:contentDescription="@string/Img"
         app:layout_constraintStart_toEndOf="@+id/imageView10"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:src="@drawable/icons8_charged_battery_128px_1" />
@@ -56,15 +69,20 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginTop="5dp"
+        android:contentDescription="@string/Img"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/imageView12"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:src="@drawable/icons8_picture_500px_1" />
+        android:src="@drawable/icons8_picture_500px_1"
+        tools:visibility="visible" />
 
     <ImageButton
         android:id="@+id/imgBTomarFoto2"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginTop="5dp"
+        android:contentDescription="@string/Img"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/imageView14"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:src="@android:drawable/ic_menu_camera" />
@@ -74,9 +92,12 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginTop="5dp"
+        android:contentDescription="@string/Img"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:src="@drawable/icons8_trekking_48px" />
+        android:src="@drawable/icons8_trekking_48px"
+        tools:visibility="visible" />
 
     <Spinner
         android:id="@+id/spnDistancia"
@@ -100,8 +121,8 @@
         android:id="@+id/imageView6"
         android:layout_width="55sp"
         android:layout_height="55sp"
-        android:layout_marginBottom="10sp"
         android:layout_marginRight="10sp"
+        android:layout_marginBottom="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView8"
         android:src="@drawable/icons8_finish_flag_128px_1" />
@@ -110,8 +131,8 @@
         android:id="@+id/imageView7"
         android:layout_width="55sp"
         android:layout_height="55sp"
-        android:layout_marginBottom="10sp"
         android:layout_marginRight="10sp"
+        android:layout_marginBottom="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/icons8_unpin_48px_1" />
@@ -120,8 +141,8 @@
         android:id="@+id/imageView8"
         android:layout_width="55sp"
         android:layout_height="55sp"
-        android:layout_marginBottom="10sp"
         android:layout_marginRight="10sp"
+        android:layout_marginBottom="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView7"
         android:src="@drawable/icons8_pin_52px_1" />
@@ -132,8 +153,8 @@
         android:layout_height="45sp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Guardar"
         android:background="@color/colorSecondary"
+        android:text="Guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="parent" />
@@ -143,9 +164,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txtVherramientasEdicion"
+        android:textColor="@color/texts"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/texts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapa_crear" />
 
@@ -153,12 +174,11 @@
         android:id="@+id/imageButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@color/colorSecondary"
         android:layout_marginStart="45dp"
+        android:background="@color/colorSecondary"
         android:onClick="popUpInfoMarcadores"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         android:src="@android:drawable/ic_menu_info_details" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

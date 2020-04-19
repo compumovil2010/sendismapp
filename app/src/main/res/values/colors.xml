@@ -13,4 +13,5 @@
     <color name="blanco">#FFFFFF</color>
 
     <color name="estrellaVacia">#000000</color>
+    <color name="transparente1">#bb0099cc</color>
 </resources>

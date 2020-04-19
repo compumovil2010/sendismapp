@@ -21,7 +21,7 @@
             android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:srcCompat="@mipmap/route_example" />
+            android:src="@mipmap/route_example" />
 
         <TextView
             android:id="@+id/text_view_name_route"

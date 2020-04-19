@@ -2,6 +2,7 @@
     <string name="app_name">sendismapp</string>
     <!-- String Johan -->
     /*Cadenas para la vista de Crear ruta*/
+    <string name="Img">Esto es una imagen</string>
     <string name="txtVherramientasEdicion">Edición de puntos de interés</string>
     <string name="popUpTitulo">Como debe usar los marcadores</string>
     <string name="expIconoCaminante">Use este icono para marcar un punto en el recorrido que sea difícil de transitar</string>
@@ -105,5 +106,6 @@
     <string name="btComentar">Comentar</string>
     <string name="menuCerrarSesion">Cerrar sesión</string>
     <string name="textoEstrellas">¿Te gustó esta ruta?</string>
+    <string name="title_activity_mapa_crear_ruta">Map</string>
     <!-- =========== -->
 </resources>

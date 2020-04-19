@@ -37,7 +37,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:onClick="clickSubirFotoPerfil"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
+                android:src="@android:drawable/ic_menu_camera" />
 
             <EditText
                 android:id="@+id/etCorreoRegistro"
@@ -83,7 +83,7 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="25dp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/salud" />
+                android:src="@drawable/salud" />
 
             <TextView
                 android:id="@+id/txtVInfoEstadoFisico"

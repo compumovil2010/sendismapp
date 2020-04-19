@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/relative_layout_top"
             android:adjustViewBounds="true"
-            app:srcCompat="@mipmap/arbol_interes" />
+            android:src="@mipmap/arbol_interes" />
         
         <TextView
             android:id="@+id/text_view_description"
