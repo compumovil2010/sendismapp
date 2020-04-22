@@ -62,9 +62,9 @@
             android:id="@+id/text_view_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/weight_es"
+            android:layout_below="@id/edit_text_age"
             android:layout_marginEnd="60sp"
-            android:layout_below="@id/edit_text_age"/>
+            android:text="Peso (Kg)" />
 
         <TextView
             android:id="@+id/text_view_peso"
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_peso"
-            android:text="Altura" />
+            android:text="Altura (cm)" />
 
         <TextView
             android:id="@+id/text_view_altura"
@@ -139,7 +139,7 @@
 
 
         <Button
-            android:id="@+id/button_apply"
+            android:id="@+id/button_aplicar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/apply_es"
@@ -148,13 +148,15 @@
             android:layout_marginTop="10sp"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/white"/>
+
         <Button
+            android:id="@+id/button_contrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button_apply"
-            android:text="@string/change_password_es"
+            android:layout_below="@id/button_aplicar"
             android:background="@color/colorPrimaryDark"
-            android:textColor="@color/white"/>
+            android:text="@string/change_password_es"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
