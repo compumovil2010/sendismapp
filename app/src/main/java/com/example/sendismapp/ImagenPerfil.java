@@ -21,8 +21,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -167,7 +170,7 @@ public class ImagenPerfil extends AppCompatActivity {
 
     private void guardarImagenPerfil(String llave){
 
-        StorageReference riversRef = mStorage.child(llave+"/perfil.jpg");
+        final StorageReference riversRef = mStorage.child(llave+"/perfil.jpg");
         riversRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -185,6 +188,7 @@ public class ImagenPerfil extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+
     }
 
 
