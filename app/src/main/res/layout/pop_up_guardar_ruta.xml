@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="250dp"
+    android:orientation="vertical"
+    android:background="@color/colorSecondary"
+    android:layout_gravity="center"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/edtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:gravity="center"
+        android:hint="@string/nombre" />
+
+    <EditText
+        android:id="@+id/edtDuracion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:hint="@string/duracionRuta" />
+
+    <EditText
+        android:id="@+id/edtCalificacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:hint="@string/calificacionRuta" />
+
+    <Button
+        android:id="@+id/btnAceptarNombreMapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:onClick="grabarNuevaRuta"
+        android:text="@string/btnAceptarNombreMapa" />
+
+</LinearLayout>

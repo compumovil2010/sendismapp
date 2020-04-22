@@ -1,0 +1,67 @@
+package com.example.sendismapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.sendismapp.logic.Route;
+
+import org.json.JSONArray;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
+
+public class GuardarRutaJSON extends AppCompatActivity {
+    private EditText edtNombre;
+    private EditText edtDuaracion;
+    private EditText edtCalificacion;
+    private Button btnConfirmar;
+    static final String nombreArchivo = "rutas.json";
+    private JSONArray rutas = new JSONArray();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.pop_up_guardar_ruta);
+
+        /*Inflar GUI*/
+        edtCalificacion = findViewById(R.id.edtCalificacion);
+        edtDuaracion = findViewById(R.id.edtDuracion);
+        edtNombre = findViewById(R.id.edtNombre);
+        btnConfirmar = findViewById(R.id.btnAceptarNombreMapa);
+    }
+
+    public void grabarNuevaRuta(View v) {
+        String nombre = edtNombre.getText().toString();
+        String duracion = edtDuaracion.getText().toString();
+        int calificacion = Integer.parseInt(edtCalificacion.getText().toString());
+
+        Route nuevaRuta = new Route();
+        nuevaRuta.setCalificacion(calificacion);
+        nuevaRuta.setName(nombre);
+        nuevaRuta.setDuracion(duracion);
+
+        rutas.put(nuevaRuta.toJSON());
+        Writer output = null;
+        try {
+            File file = new File(this.getFilesDir().getAbsolutePath(), nombreArchivo);
+            Log.i("ARCHIVO", "Ubicacion de archivo :" + file);
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(rutas.toString());
+            output.close();
+            Toast.makeText(getBaseContext(), "Ruta agregada", Toast.LENGTH_LONG).show();
+            /*WARNING*/
+
+        } catch (Exception e) {
+            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+}

@@ -2,29 +2,46 @@ package com.example.sendismapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sendismapp.logic.MiRuta;
+import com.example.sendismapp.logic.Route;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class VerMisRutas extends AppCompatActivity {
 
     private MiRuta[] misRutas;
+    private Route[] misRutas2;
+    static final String nombreArchivo = "rutas.json";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_mis_rutas);
 
-        iniciarArreglo();
-        ArrayAdapter<MiRuta> adapter = new ArrayAdapter<MiRuta>(this,
-                android.R.layout.simple_list_item_1, misRutas);
+        //iniciarArreglo();
+        try {
+            llenarArreglo2();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ArrayAdapter<Route> adapter = new ArrayAdapter<Route>(this,
+                android.R.layout.simple_list_item_1, misRutas2);
         ListView listView = (ListView) findViewById(R.id.lista);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -34,13 +51,65 @@ public class VerMisRutas extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        /*ArrayAdapter<MiRuta> adapter = new ArrayAdapter<MiRuta>(this,
+                android.R.layout.simple_list_item_1, misRutas);
+        ListView listView = (ListView) findViewById(R.id.lista);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), verRuta.class);
+                startActivity(intent);
+            }
+        });*/
 
 
     }
-    public void iniciarArreglo ()
-    {
+
+    public String leerJson() {
+        String json = null;
+        try {
+            InputStream is = this.openFileInput(nombreArchivo);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+    public void llenarArreglo2() throws JSONException {
+        String retorno = leerJson();
+        if(retorno != null)
+        {
+            Log.e("OMG", "Resultado otra funcion: " + retorno);
+            JSONArray marcadoresGloriosos = new JSONArray(retorno);
+            misRutas2 = new Route[marcadoresGloriosos.length()];
+            for (int i = 0; i < marcadoresGloriosos.length(); i++) {
+                JSONObject ru = marcadoresGloriosos.getJSONObject(i);
+                String nombre = ru.getString("nombre: ");
+                String duracion = ru.getString("duracion: ");
+                String calificacion = ru.getString("calificacion: ");
+                Route ruN = new Route();
+                ruN.setName(nombre);
+                ruN.setDuracion(duracion);
+                ruN.setCalificacion(Integer.parseInt(calificacion));
+                misRutas2[i] = ruN;
+
+                Log.e("OMG", "Resultado lectura: " + nombre);
+
+            }
+        }
+    }
+
+    public void iniciarArreglo() {
         misRutas = new MiRuta[15];
-        String [] nombre = {
+        String[] nombre = {
                 "Monserrate", "Guadalupe", "Chia", "Cajica", "Mosquera"
         };
         Double calificacion;
@@ -49,13 +118,12 @@ public class VerMisRutas extends AppCompatActivity {
         int segundos;
 
         MiRuta aux;
-        for (int i = 0; i<misRutas.length;i++)
-        {
-            calificacion = Double.valueOf((i+3)%2);
-            hora = (i + 1)%2;
-            minutos = (i*10)%60;
-            segundos = (i*100)%60;
-            misRutas[i] = new MiRuta(nombre[i%5],calificacion,hora,minutos,segundos);
+        for (int i = 0; i < misRutas.length; i++) {
+            calificacion = Double.valueOf((i + 3) % 2);
+            hora = (i + 1) % 2;
+            minutos = (i * 10) % 60;
+            segundos = (i * 100) % 60;
+            misRutas[i] = new MiRuta(nombre[i % 5], calificacion, hora, minutos, segundos);
 
         }
     }

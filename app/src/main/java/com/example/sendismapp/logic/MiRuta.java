@@ -59,11 +59,11 @@ public class MiRuta {
     @Override
     public String toString() {
         return
-                "Nombre :" + nombre + '\n' +
+        "Nombre :" + nombre + '\n' +
                 "Calificacion Promedio :" + calificacionPromedio + '\n'+
                 "Duracion : " + hora +
                 ":" + minutos +
                 ":" + segundos
-                ;
+        ;
     }
 }
