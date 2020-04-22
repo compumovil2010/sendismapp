@@ -15,18 +15,18 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/white">
 
-        <ImageView
-            android:id="@+id/image_view_profile"
+        <ImageButton
+            android:id="@+id/imagenPerfil"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
+            android:layout_height="300dp"
             android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
             android:src="@mipmap/profile_example" />
 
         <EditText
             android:id="@+id/edit_text_username_profile"
-            android:layout_below="@id/image_view_profile"
+            android:layout_below="@id/imagenPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username_es"
