@@ -23,9 +23,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".GuardarRutaJSON"></activity>
         <activity android:name=".ImagenPerfil"></activity>
+        <activity android:name=".CambiarContrasena"></activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
