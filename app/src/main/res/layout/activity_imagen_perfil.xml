@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".ImagenPerfil">
 
     <Button
@@ -24,7 +25,7 @@
         android:id="@+id/buttonCamara"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:text="Camara"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,8 +38,8 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="385dp"
-        android:layout_height="445dp"
-        android:layout_marginTop="48dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +50,7 @@
         android:id="@+id/buttonAplicar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:text="Aplicar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
