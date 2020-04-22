@@ -5,7 +5,7 @@
     <string name="Img">Esto es una imagen</string>
     <string name="txtFrecuencia">Frecuencia en toma de datos</string>
     <string name="txtMarcadores">Marcadores</string>
-    <string name="edtText">Pon un nombre a tu ruta! :)</string>
+    <string name="edtText">Pon un nombre a tu mapa! :)</string>
     <string name="txtVherramientasEdicion">Edición de puntos de interés</string>
     <string name="popUpTitulo">Como debe usar los marcadores</string>
     <string name="expIconoCaminante">Use este icono para marcar un punto en el recorrido que sea difícil de transitar</string>
