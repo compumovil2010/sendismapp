@@ -561,9 +561,12 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
+        if(nombreArchivo != null && nombreArchivo != "")
+        {
+            Intent intent = new Intent(Mapa_crear_ruta.this, GuardarRutaJSON.class);
+            startActivity(intent);
 
-        Intent intent = new Intent(Mapa_crear_ruta.this, GuardarRutaJSON.class);
-        startActivity(intent);
+        }
         //readObject(filename);
         //readFromFile(this, filename);
     }

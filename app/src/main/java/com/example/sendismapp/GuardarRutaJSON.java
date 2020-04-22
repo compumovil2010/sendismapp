@@ -2,6 +2,7 @@ package com.example.sendismapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,5 +64,7 @@ public class GuardarRutaJSON extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
+        Intent intent = new Intent(GuardarRutaJSON.this,MenuPrincipal.class);
+        startActivity(intent);
     }
 }
