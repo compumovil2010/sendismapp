@@ -2,34 +2,25 @@ package com.example.sendismapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class
 PerfilActivity extends AppCompatActivity {
@@ -40,6 +31,16 @@ PerfilActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     public static final String PATH_USERS="users/";
     public static final String PATH_USERS_IMAGES="images/";
+    private SeekBar seekBarPeso;
+    private SeekBar seekBarAltura;
+    private SeekBar seekBarExperiencia;
+    private TextView textViewPeso;
+    private TextView textViewAltura;
+    private TextView textViewExperiencia;
+    private EditText editTextNombreUsuario;
+    private EditText editTextNombre;
+    private EditText editTextEdad;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,18 @@ PerfilActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mStorage = FirebaseStorage.getInstance().getReference(PATH_USERS_IMAGES);
         imagenPerfil = findViewById(R.id.imagenPerfil);
+        seekBarAltura = findViewById(R.id.seek_bar_altura);
+        seekBarExperiencia = findViewById(R.id.seek_bar_experiencia);
+        seekBarPeso = findViewById(R.id.seek_bar_peso);
+        textViewAltura = findViewById(R.id.text_view_altura);
+        textViewExperiencia = findViewById(R.id.text_view_experience_display);
+        textViewPeso = findViewById(R.id.text_view_peso);
+        editTextEdad = findViewById(R.id.edit_text_age);
+        editTextNombre = findViewById(R.id.edit_text_name_profile);
+        editTextNombreUsuario = findViewById(R.id.edit_text_username_profile);
+
+
+        seekBarExperiencia.setProgress(Integer.parseInt(textViewExperiencia.getText().toString()));
         FirebaseUser user = mAuth.getCurrentUser();
         try {
             cargarFoto(user.getUid());
@@ -63,6 +76,65 @@ PerfilActivity extends AppCompatActivity {
                 startActivityForResult(intent,IMAGEN);
             }
         });
+
+        seekBarPeso.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                textViewPeso.setText(Integer.toString(progress*2)+" Kg");
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekBarExperiencia.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                textViewExperiencia.setText(Integer.toString(progress));
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekBarAltura.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int altura = progress*230/100;
+                textViewAltura.setText(Integer.toString(altura)+" cm");
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+
+
     }
 
     private void cargarFoto(String llave) throws IOException {
