@@ -37,6 +37,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sendismapp.logic.MarcadorRuta;
+import com.example.sendismapp.logic.PuntoDeInteres;
+import com.example.sendismapp.logic.Ruta;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -64,6 +66,10 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -128,7 +134,8 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
     /*Manipulacion de marcadores*/
     private ImageView basura;
     private Marker marcadorActual;
-    private ArrayList<Marker> marcadoresRuta = new ArrayList<>();
+    private List<PuntoDeInteres> puntosDeInteres = new ArrayList<PuntoDeInteres>();
+    private List<Marker> marcadoresRuta = new ArrayList<>();
     private JSONArray marcadores = new JSONArray();
     private int imagenSeleccionada = 0;
 
@@ -143,6 +150,17 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
     /*Manipulacion de la camara*/
     private ImageButton btnFoto;
     static boolean accesoCamara = false;
+
+    /*Firebase*/
+    private final static String PATH_ROUTES = "rutas/";
+
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private FirebaseUser user;
+    private FirebaseAuth mAuth;
+
+    private Ruta rutaActual;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -233,6 +251,21 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         /*Uso de camara*/
         btnFoto = findViewById(R.id.btnFoto);
         btnFoto.setVisibility(View.INVISIBLE);
+
+        /*Firebase*/
+        database = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        Toast.makeText(this,"Id: " + user.getUid(),Toast.LENGTH_LONG).show();
+        edtBuscarDireccion.setText(user.getUid());
+
+        if(rutaActual == null)
+        {
+            myRef = database.getReference(PATH_ROUTES + user.getUid());
+            rutaActual = new Ruta();
+            String key = myRef.push().getKey();
+            rutaActual.setLlaveRutaActual(key);
+        }
     }
 
     //Lifecycle
@@ -394,17 +427,16 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-                //mMap.clear();
-                //LatLng bogota= new LatLng(latitud, longitud);
-                //mMap.addMarker(new MarkerOptions().position(bogota).title("Localizacion actual"));
                 int height = 100;
                 int width = 100;
                 Bitmap b = BitmapFactory.decodeResource(getResources(), imagenSeleccionada);
                 Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
                 BitmapDescriptor smallMarkerIcon = BitmapDescriptorFactory.fromBitmap(smallMarker);
                 mMap.addMarker(new MarkerOptions().position(latLng).title(geoCoderSearchLatLang(latLng)).icon(smallMarkerIcon));
-                //double distanciaObjetivo = distance(latitud, longitud, latLng.latitude, latLng.longitude);
-                //Toast.makeText(Mapa_crear_ruta.this, "Punto de interes agregado " , Toast.LENGTH_LONG).show();
+
+                //Manejo de puntos de interes globales
+                PuntoDeInteres nuevoPI = new PuntoDeInteres(latLng.latitude, latLng.longitude, imagenSeleccionada);
+                puntosDeInteres.add(nuevoPI);
             }
         });
         /**/
@@ -490,9 +522,27 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
      * Manipulacion de marcadores
      **/
     public void eliminarMarcador(View v) {
+        //Remover de los puntos de la ruta
+        marcadoresRuta.remove(marcadorActual);
         marcadorActual.remove();
+        //Remover de los puntos de interes de la ruta
+        PuntoDeInteres eliminado = buscarPuntoInteres(marcadorActual.getPosition());
+        puntosDeInteres.remove(eliminado);
+
         basura.setVisibility(View.INVISIBLE);
         btnFoto.setVisibility(View.INVISIBLE);
+    }
+
+    public PuntoDeInteres buscarPuntoInteres(LatLng coordenadas)
+    {
+        for(PuntoDeInteres p: puntosDeInteres)
+        {
+            if(p.getLatitud() == coordenadas.latitude && p.getLongitud() == coordenadas.longitude)
+            {
+                return p;
+            }
+        }
+        return null;
     }
 
     public void armarRuta(View v) {
@@ -528,6 +578,9 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
      * Manipulacion de guardado-almacenamiento
      **/
     public void guardarRuta(View v) {
+
+        //Almacenamiento Local
+
         double lat, lng;
         for (Marker mActual : marcadoresRuta) //Llenar el Array con los marcadores de la ruta (Rojos)
         {
@@ -537,11 +590,6 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
             marcadores.put(miMarcador.toJSON());
         }
         Writer output = null;
-        /*Escritura del listView*/
-        String nuevoLog;
-        /*nuevoLog = new String(miLocaclizacion.getFecha()  + "\n"
-                + "Latitud: " + miLocaclizacion.getLatitud() + " Longitud: " + miLocaclizacion.getLongitud());
-        arreglo.add(nuevoLog);*/
         try {
             //File file = new File(getBaseContext().getExternalFilesDir(null), filename);
             if(nombreArchivo != null && nombreArchivo != "")
@@ -552,7 +600,6 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
                 output.write(marcadores.toString());
                 output.close();
                 Toast.makeText(getBaseContext(), "Mapa salvado", Toast.LENGTH_LONG).show();
-                /*WARNING*/
             }
             else
             {
@@ -563,12 +610,24 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         }
         if(nombreArchivo != null && nombreArchivo != "")
         {
+            //Almacenamiento en Firebase
+            List<LatLng> posicionesMarcadoresRuta = new ArrayList<LatLng>();
+
+            for(Marker m:marcadoresRuta)
+            {
+                posicionesMarcadoresRuta.add(m.getPosition());
+            }
+
+            myRef = database.getReference(PATH_ROUTES + user.getUid() + "/" + rutaActual.getLlaveRutaActual());
+            rutaActual.setPuntosDeInteres(puntosDeInteres);
+            rutaActual.setPuntosRuta(posicionesMarcadoresRuta);
+            rutaActual.setNombre(edtBuscarDireccion.getText().toString());
+            rutaActual.setLlavePropietario(user.getUid());
+            myRef.setValue(rutaActual);
+
             Intent intent = new Intent(Mapa_crear_ruta.this, GuardarRutaJSON.class);
             startActivity(intent);
-
         }
-        //readObject(filename);
-        //readFromFile(this, filename);
     }
 
     public String experimentoLeer(Context context) {
@@ -631,12 +690,10 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case REQUEST_IMAGE_CAPTURE: {
                 if (resultCode == RESULT_OK) {
-                    /*Bundle extras = data.getExtras();
-                    Bitmap imageBitmap = (Bitmap) extras.get("data");
-                    imagen.setImageBitmap(imageBitmap);*/
                     Toast.makeText(getApplicationContext(), "Imagen asignada con éxito", Toast.LENGTH_LONG).show();
                 }
                 break;

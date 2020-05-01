@@ -32,243 +32,233 @@
             android:autofillHints="" />
     </fragment>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/mapa_crear">
 
-    <TextView
-        android:id="@+id/txtVMarcadores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:padding="10dp"
-        android:text="@string/txtMarcadores"
-        android:textColor="@color/texts"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres" />
-    <ImageView
-        android:id="@+id/marcadorDificil"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:contentDescription="@string/Img"
-        android:onClick="clickMDificil"
-        app:layout_constraintStart_toEndOf="@+id/txtVMarcadores"
-        app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
-        android:tag="m_dificultad"
-        android:src="@drawable/m_dificultad" />
+        <TextView
+            android:id="@+id/txtVMarcadores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:text="@string/txtMarcadores"
+            android:textColor="@color/texts"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imgBasura"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:contentDescription="@string/Img"
-        android:onClick="eliminarMarcador"
-        android:src="@drawable/basura"
-        android:tag="basura"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFoto" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/selecDificil"
-        android:layout_width="81dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="24dp"
-        android:contentDescription="@string/Img"
-        android:src="@drawable/seleccionado2"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/txtVFrecuencia"
-        app:layout_constraintEnd_toEndOf="@+id/btnFoto"
-        app:layout_constraintHorizontal_bias="0.361"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/marcardorEnergia"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="@string/Img"
-        android:src="@drawable/m_energia"
-        android:onClick="clickMEnergia"
-        app:layout_constraintStart_toEndOf="@+id/marcadorDificil"
-        app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
-        android:tag="m_energia"/>
+                <ImageView
+                    android:id="@+id/marcadorDificil"
+                    android:layout_width="59dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/Img"
+                    android:onClick="clickMDificil"
+                    android:src="@drawable/m_dificultad"
+                    android:tag="m_dificultad"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginVertical="15dp"
+                    app:layout_constraintStart_toEndOf="@+id/txtVMarcadores"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres" />
+                <ImageView
+                    android:id="@+id/selecDificil"
+                    android:layout_width="81dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/seleccionado2"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/btnFoto"
+                    app:layout_constraintHorizontal_bias="0.361"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="467dp"
+                    tools:visibility="visible" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/marcardorEnergia"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/m_energia"
+                    android:onClick="clickMEnergia"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginVertical="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/marcadorDificil"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
+                    android:tag="m_energia"/>
 
-    <ImageView
-        android:id="@+id/selecEnergia"
-        android:layout_width="81dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="24dp"
-        android:contentDescription="@string/Img"
-        android:src="@drawable/seleccionado2"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/txtVFrecuencia"
-        app:layout_constraintEnd_toEndOf="@+id/btnFoto"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+                <ImageView
+                    android:id="@+id/selecEnergia"
+                    android:layout_width="81dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/seleccionado2"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/btnFoto"
+                    app:layout_constraintHorizontal_bias="0.535"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="467dp"
+                    tools:visibility="visible" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/marcadorAguar"
+                    android:layout_width="55sp"
+                    android:layout_height="55sp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/water"
+                    android:onClick="clickMAgua"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginVertical="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/marcardorEnergia"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
+                    android:tag="water"/>
 
-    <ImageView
-        android:id="@+id/marcadorAguar"
-        android:layout_width="55sp"
-        android:layout_height="55sp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="@string/Img"
-        android:src="@drawable/water"
-        android:onClick="clickMAgua"
-        app:layout_constraintStart_toEndOf="@+id/marcardorEnergia"
-        app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
-        android:tag="water"/>
+                <ImageView
+                    android:id="@+id/selecAgua"
+                    android:layout_width="81dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/seleccionado2"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/btnFoto"
+                    app:layout_constraintHorizontal_bias="0.704"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="467dp"
+                    tools:visibility="visible" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/selecAgua"
-        android:layout_width="81dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="24dp"
-        android:contentDescription="@string/Img"
-        android:src="@drawable/seleccionado2"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/txtVFrecuencia"
-        app:layout_constraintEnd_toEndOf="@+id/btnFoto"
-        app:layout_constraintHorizontal_bias="0.704"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+                <ImageView
+                    android:id="@+id/marcadorPaisaje"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="5dp"
+                    android:contentDescription="@string/Img"
+                    android:onClick="clickMPaisaje"
+                    app:layout_constraintStart_toEndOf="@+id/marcadorAguar"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
+                    android:src="@drawable/m_paisaje"
+                    tools:visibility="visible"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginVertical="10dp"
+                    android:tag="m_paisaje"/>
 
-    <ImageView
-        android:id="@+id/marcadorPaisaje"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:contentDescription="@string/Img"
-        android:onClick="clickMPaisaje"
-        app:layout_constraintStart_toEndOf="@+id/marcadorAguar"
-        app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
-        android:src="@drawable/m_paisaje"
-        tools:visibility="visible"
-        android:tag="m_paisaje"/>
+                <ImageView
+                    android:id="@+id/selecPaisaje"
+                    android:layout_width="81dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/seleccionado2"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/btnFoto"
+                    app:layout_constraintHorizontal_bias="0.878"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="467dp"
+                    tools:visibility="visible" />
+            </FrameLayout>
+            <ImageView
+                android:id="@+id/imgBasura"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:contentDescription="@string/Img"
+                android:onClick="eliminarMarcador"
+                android:src="@drawable/basura"
+                android:tag="basura"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnFoto" />
+        </LinearLayout>
 
-    <ImageView
-        android:id="@+id/selecPaisaje"
-        android:layout_width="81dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="24dp"
-        android:contentDescription="@string/Img"
-        android:src="@drawable/seleccionado2"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/txtVFrecuencia"
-        app:layout_constraintEnd_toEndOf="@+id/btnFoto"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/btnFoto"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:contentDescription="@string/Img"
-        android:visibility="visible"
-        android:onClick="desplegarCamara"
-        app:layout_constraintStart_toEndOf="@+id/marcadorPaisaje"
-        app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
-        android:src="@android:drawable/ic_menu_camera" />
+            <ImageButton
+                android:id="@+id/imgBInfoMarcadores"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_weight="0.1"
+                android:background="@color/colorSecondary"
+                android:contentDescription="@string/Img"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:onClick="popUpInfoMarcadores"
+                android:src="@android:drawable/ic_menu_info_details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtVMarcadores" />
 
-    <TextView
-        android:id="@+id/txtVFrecuencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="@string/txtFrecuencia"
-        android:textColor="@color/texts"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBInfoMarcadores" />
+            <ImageButton
+                android:id="@+id/btnFoto"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_weight="0.1"
+                android:background="@color/colorSecondary"
+                android:contentDescription="@string/Img"
+                android:visibility="visible"
+                android:onClick="desplegarCamara"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintStart_toEndOf="@+id/marcadorPaisaje"
+                app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
+                android:src="@android:drawable/ic_menu_camera" />
 
-    <Spinner
-        android:id="@+id/spnDistancia"
-        android:layout_width="wrap_content"
-        android:layout_height="35sp"
-        android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/txtVFrecuencia"
-        app:layout_constraintTop_toBottomOf="@+id/imgBInfoMarcadores" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/bandera"
         android:layout_width="55sp"
         android:layout_height="55sp"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginStart="28dp"
         android:contentDescription="@string/Img"
-        android:src="@drawable/m_pin_bandera"
         android:onClick="armarRuta"
+        android:src="@drawable/m_pin_bandera"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/agregarMarcador" />
-
-    <ImageView
-        android:id="@+id/eliminarMarcador"
-        android:layout_width="55sp"
-        android:layout_height="55sp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10sp"
-        android:contentDescription="@string/Img"
-        android:src="@drawable/m_pin_rojo"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/agregarMarcador" />
 
     <ImageView
         android:id="@+id/agregarMarcador"
         android:layout_width="55sp"
         android:layout_height="55sp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10sp"
         android:contentDescription="@string/Img"
-        android:src="@drawable/m_pin_azul"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="45dp"
         android:onClick="agregarMarcadorRuta"
+        android:src="@drawable/m_pin_azul"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/eliminarMarcador" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnGuardar"
-        android:layout_width="0sp"
+        android:layout_width="189dp"
         android:layout_height="45sp"
-        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/colorSecondary"
-        android:text="@string/btnGuardar"
         android:onClick="guardarRuta"
+        android:text="@string/btnGuardar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bandera"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/txtVEdicionPuntosInteres"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="@string/txtVherramientasEdicion"
-        android:textColor="@color/texts"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapa_crear" />
-
-    <ImageButton
-        android:id="@+id/imgBInfoMarcadores"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="45dp"
-        android:background="@color/colorSecondary"
-        android:contentDescription="@string/Img"
-        android:onClick="popUpInfoMarcadores"
-        android:src="@android:drawable/ic_menu_info_details"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtVMarcadores" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

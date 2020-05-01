@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.sendismapp.logic.Route;
+import com.example.sendismapp.logic.Ruta;
 
 import org.json.JSONArray;
 
@@ -45,9 +45,9 @@ public class GuardarRutaJSON extends AppCompatActivity {
         String duracion = edtDuaracion.getText().toString();
         int calificacion = Integer.parseInt(edtCalificacion.getText().toString());
 
-        Route nuevaRuta = new Route();
+        Ruta nuevaRuta = new Ruta();
         nuevaRuta.setCalificacion(calificacion);
-        nuevaRuta.setName(nombre);
+        nuevaRuta.setNombre(nombre);
         nuevaRuta.setDuracion(duracion);
 
         rutas.put(nuevaRuta.toJSON());

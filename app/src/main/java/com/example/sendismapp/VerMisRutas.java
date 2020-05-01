@@ -6,14 +6,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sendismapp.logic.MiRuta;
-import com.example.sendismapp.logic.Route;
+import com.example.sendismapp.logic.Ruta;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,12 +19,11 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 public class VerMisRutas extends AppCompatActivity {
 
     private MiRuta[] misRutas;
-    private Route[] misRutas2;
+    private Ruta[] misRutas2;
     static final String nombreArchivo = "rutas.json";
 
     @Override
@@ -40,7 +37,7 @@ public class VerMisRutas extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ArrayAdapter<Route> adapter = new ArrayAdapter<Route>(this,
+        ArrayAdapter<Ruta> adapter = new ArrayAdapter<Ruta>(this,
                 android.R.layout.simple_list_item_1, misRutas2);
         ListView listView = (ListView) findViewById(R.id.lista);
         listView.setAdapter(adapter);
@@ -89,14 +86,14 @@ public class VerMisRutas extends AppCompatActivity {
         {
             Log.e("OMG", "Resultado otra funcion: " + retorno);
             JSONArray marcadoresGloriosos = new JSONArray(retorno);
-            misRutas2 = new Route[marcadoresGloriosos.length()];
+            misRutas2 = new Ruta[marcadoresGloriosos.length()];
             for (int i = 0; i < marcadoresGloriosos.length(); i++) {
                 JSONObject ru = marcadoresGloriosos.getJSONObject(i);
                 String nombre = ru.getString("nombre: ");
                 String duracion = ru.getString("duracion: ");
                 String calificacion = ru.getString("calificacion: ");
-                Route ruN = new Route();
-                ruN.setName(nombre);
+                Ruta ruN = new Ruta();
+                ruN.setNombre(nombre);
                 ruN.setDuracion(duracion);
                 ruN.setCalificacion(Integer.parseInt(calificacion));
                 misRutas2[i] = ruN;

@@ -8,16 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.sendismapp.R;
-import com.example.sendismapp.logic.Route;
+import com.example.sendismapp.logic.Ruta;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RouteAdapter extends BaseAdapter {
 
-    List<Route> arrayList;
+    List<Ruta> arrayList;
     Context context;
-    public RouteAdapter(Context context, List<Route> arrayList) {
+    public RouteAdapter(Context context, List<Ruta> arrayList) {
         this.arrayList=arrayList;
         this.context=context;
     }
@@ -45,10 +44,10 @@ public class RouteAdapter extends BaseAdapter {
         TextView route_name = (TextView) convertView.findViewById(R.id.text_view_route_name);
         TextView route_distance=(TextView) convertView.findViewById(R.id.text_view_distance_adapter);
         TextView route_difficulty=(TextView)convertView.findViewById(R.id.text_view_difficulty_adapter);
-        Route route=arrayList.get(position);
-        route_name.setText(route.getName());
-        route_distance.setText( String.valueOf( route.getDistance() ) );
-        route_difficulty.setText(String.valueOf(route.getDifficulty()));
+        Ruta route=arrayList.get(position);
+        route_name.setText(route.getNombre());
+        route_distance.setText( String.valueOf( route.getDistancia() ) );
+        route_difficulty.setText(String.valueOf(route.getDificultad()));
         //TODO: programmatically set imageview:src to the route image
         return convertView;
     }
