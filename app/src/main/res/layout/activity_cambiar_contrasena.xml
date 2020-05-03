@@ -57,7 +57,7 @@
         android:id="@+id/boton_contrasena"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="212dp"
         android:background="@color/colorPrimaryDark"
         android:text="Cambiar Contraseña"
         android:textColor="@color/white"
