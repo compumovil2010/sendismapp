@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,17 +38,24 @@ public class VerMisRutas extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ArrayAdapter<Ruta> adapter = new ArrayAdapter<Ruta>(this,
-                android.R.layout.simple_list_item_1, misRutas2);
-        ListView listView = (ListView) findViewById(R.id.lista);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(), verRuta.class);
-                startActivity(intent);
-            }
-        });
+        if(misRutas2.length > 0)//Si el JSOn existe y tiene rutas almacenadas
+        {
+            ArrayAdapter<Ruta> adapter = new ArrayAdapter<Ruta>(this,
+                    android.R.layout.simple_list_item_1, misRutas2);
+            ListView listView = (ListView) findViewById(R.id.lista);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getBaseContext(), verRuta.class);
+                    startActivity(intent);
+                }
+            });
+        }
+        else
+        {
+            Toast.makeText(this,"No se han creado rutas de forma local", Toast.LENGTH_LONG).show();
+        }
         /*ArrayAdapter<MiRuta> adapter = new ArrayAdapter<MiRuta>(this,
                 android.R.layout.simple_list_item_1, misRutas);
         ListView listView = (ListView) findViewById(R.id.lista);

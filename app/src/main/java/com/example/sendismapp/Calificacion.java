@@ -36,13 +36,9 @@ public class Calificacion extends AppCompatActivity {
         });
         ver.show();
         //Toast.makeText(this,String.valueOf(califica.getRating()),Toast.LENGTH_SHORT).show();
-        botonCalificacion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                finish();
-            }
-        });
     }
 
+    public void prueba(View view) {
+        Toast.makeText(this,"Fuincionando",Toast.LENGTH_SHORT).show();
+    }
 }

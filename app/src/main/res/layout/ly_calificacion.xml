@@ -94,6 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:onClick="prueba"
         android:text="@string/btHacerCalificacion"
         app:layout_constraintTop_toBottomOf="@id/rbGroup"
         app:layout_constraintBottom_toBottomOf="parent"

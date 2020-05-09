@@ -420,9 +420,9 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
-        mMap.addMarker(new MarkerOptions().position(bogota).title("Marker in Bogota"));
+        /*mMap.addMarker(new MarkerOptions().position(bogota).title("Marker in Bogota"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bogota));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(15));*/
 
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
