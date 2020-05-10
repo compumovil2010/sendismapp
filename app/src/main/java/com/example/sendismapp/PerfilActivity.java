@@ -1,8 +1,5 @@
 package com.example.sendismapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +9,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class
 PerfilActivity extends AppCompatActivity {

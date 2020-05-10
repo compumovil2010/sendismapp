@@ -20,12 +20,19 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.sendismapp.logic.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,13 +47,21 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class Registrarse extends AppCompatActivity {
 
     private Spinner spnExperiencia;
+    private Spinner nacionalidad;
+    private ArrayList<String> paises = new ArrayList();
+    private ArrayAdapter<String> adapterNacionalidad;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     public static final String PATH_USERS="users/";
@@ -92,6 +107,12 @@ public class Registrarse extends AppCompatActivity {
                 R.array.Esperiencias, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnExperiencia.setAdapter(adapter);
+
+        nacionalidad = findViewById(R.id.spnNacionalidad);
+        adapterNacionalidad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, paises);
+        adapterNacionalidad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        obtenerPaises();
+
     }
 
     public void clickRegistrarse(View view) {
@@ -235,7 +256,7 @@ public class Registrarse extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.i("Registro-Usuario", "Success");
                             if(uriImagen==null)uriImagen="El usuario no guardo foto de perfil";
-                            Usuario nuevo = new Usuario(cor,nom,con,spnExperiencia.getSelectedItem().toString(),uriImagen,Float.parseFloat(pes),Float.parseFloat(alt),Integer.parseInt(eda));
+                            Usuario nuevo = new Usuario(cor,nom,con,spnExperiencia.getSelectedItem().toString(),uriImagen,Float.parseFloat(pes),Float.parseFloat(alt),Integer.parseInt(eda),nacionalidad.getSelectedItem().toString());
                             FirebaseUser user = mAuth.getCurrentUser();
                             myRef = database.getReference(PATH_USERS+user.getUid());
                             myRef.setValue(nuevo);
@@ -261,6 +282,40 @@ public class Registrarse extends AppCompatActivity {
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
         return cursor.getString(column_index);
+    }
+
+    public void obtenerPaises(){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://restcountries.eu/rest/v2/all?fields=name";
+        StringRequest req = new StringRequest(Request.Method.GET, url,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        String respuesta = (String)response;
+                        Log.i("REST PAISES",respuesta);
+                        JSONArray resultado;
+                        try {
+                            resultado = new JSONArray(respuesta);
+                            for(int i=0; i<resultado.length(); i++) {
+                                JSONObject p = (JSONObject) resultado.get(i);
+                                String nombre = (String)p.get("name");
+                                paises.add(nombre);
+                            }
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        nacionalidad.setAdapter(adapterNacionalidad);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("TAG", "Error handling rest invocation"+error.getCause());
+                    }
+                }
+        );
+        queue.add(req);
     }
 
 }

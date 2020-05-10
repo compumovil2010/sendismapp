@@ -77,6 +77,22 @@
                 android:inputType="textPassword"
                 android:hint="@string/txtFPassword2" />
 
+            <TextView
+                android:id="@+id/txtVNacionalidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="@string/txtVNacionalidad"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spnNacionalidad"
+                android:layout_width="230dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
+
             <ImageView
                 android:id="@+id/imgEstadoFisico"
                 android:layout_width="70dp"

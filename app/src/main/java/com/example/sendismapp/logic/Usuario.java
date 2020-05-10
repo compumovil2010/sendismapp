@@ -6,12 +6,13 @@ public class Usuario {
     private String nombre;
     private String contrasena;
     private String experiencia;
+    private String nacionalidad;
     private String imagen;
     private float peso;
     private float altura;
     private int edad;
 
-    public Usuario(String correo, String nombre, String contrasena, String experiencia, String imagen, float peso, float altura, int edad) {
+    public Usuario(String correo, String nombre, String contrasena, String experiencia, String imagen, float peso, float altura, int edad, String nacionalidad) {
         this.correo = correo;
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -20,6 +21,7 @@ public class Usuario {
         this.peso = peso;
         this.altura = altura;
         this.edad = edad;
+        this.nacionalidad = nacionalidad;
     }
 
     public String getCorreo() {
@@ -84,5 +86,13 @@ public class Usuario {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public String getNacionalidad(){
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad){
+        this.nacionalidad = nacionalidad;
     }
 }
