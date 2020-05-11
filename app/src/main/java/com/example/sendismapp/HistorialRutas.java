@@ -77,7 +77,8 @@ public class HistorialRutas extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(), verRuta.class);
+                Intent intent = new Intent(getBaseContext(), Calificacion.class);
+                intent.putExtra("ruta",rutas.get(position).getLlaveRutaActual());
                 startActivity(intent);
             }
         });
