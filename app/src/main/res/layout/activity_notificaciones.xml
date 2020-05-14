@@ -34,7 +34,7 @@
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/listaNotificaciones"
+                android:id="@+id/listaNotifi"
                 android:layout_width="match_parent"
                 android:layout_height="691dp" />
         </LinearLayout>

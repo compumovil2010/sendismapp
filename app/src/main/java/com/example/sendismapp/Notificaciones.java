@@ -3,18 +3,25 @@ package com.example.sendismapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.sendismapp.logic.Notificacion;
 import com.example.sendismapp.logic.Ruta;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Notificaciones extends AppCompatActivity {
@@ -31,35 +38,53 @@ public class Notificaciones extends AppCompatActivity {
         setContentView(R.layout.activity_notificaciones);
 
         notificaciones = new ArrayList<Notificacion>();
+        leerFB();
+    }
+
+    public void mostrarArreglo ()
+    {
+        Log.e("OMG", "Resultado lectura: " + notificaciones.size());
+        ArrayAdapter<Notificacion> adapter = new ArrayAdapter<Notificacion>(this,
+                android.R.layout.simple_list_item_1, notificaciones);
+        ListView listView = (ListView) findViewById(R.id.listaNotifi);
+        listView.setAdapter(adapter);
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), Calificacion.class);
+                //intent.putExtra("ruta",rutas.get(position).getLlaveRutaActual());
+                //intent.putExtra("nombreRuta",rutas.get(position).getNombre());
+                //intent.putExtra("propietario",rutas.get(position).getLlavePropietario());
+                startActivity(intent);
+            }
+        });*/
     }
 
     private void leerFB()
     {
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(PATH_NOTIFICATION);
+        myRef = database.getReference(PATH_NOTIFICATION+user.getUid());
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot single : dataSnapshot.getChildren())
                 {
                     for (DataSnapshot single2 : single.getChildren()) {
-                        Ruta aux= new Ruta();
-                        aux.setCalificacion(Integer.parseInt(single2.child("calificacion").getValue().toString()));
-                        aux.setDificultad(Integer.parseInt(single2.child("dificultad").getValue().toString()));
-                        aux.setDistancia(Double.parseDouble(single2.child("distancia").getValue().toString()));
-                        aux.setDuracion(single2.child("duracion").getValue().toString());
-                        aux.setLlavePropietario(single2.child("llavePropietario").getValue().toString());
-                        aux.setLlaveRutaActual(single2.child("llaveRutaActual").getValue().toString());
-                        aux.setNombre(single2.child("nombre").getValue().toString());
-                        //rutas.add(aux);
+                        Notificacion aux= new Notificacion();
+                        aux.setRuta(single2.child("ruta").getValue().toString());
+                        //aux.setFecha(Date.valueOf(single2.child("fecha").getValue().toString()));
+                        aux.setUsuario(single2.child("usuario").getValue().toString());
+                        notificaciones.add(aux);
 
                         single.getKey();
-                        Log.e("OMG", "Resultado lectura: " + single2.child("nombre").getValue().toString());
+                        Log.e("OMG", "Resultado lectura: " + single2.child("ruta").getValue().toString());
                         //Log.e("OMG", "Resultado lectura: " + rutas.size());
                     }
                 }
-                ///mostrarArreglo();
+                mostrarArreglo();
             }
 
             @Override

@@ -42,7 +42,7 @@ public class VerMisRutas extends AppCompatActivity {
         {
             ArrayAdapter<Ruta> adapter = new ArrayAdapter<Ruta>(this,
                     android.R.layout.simple_list_item_1, misRutas2);
-            ListView listView = (ListView) findViewById(R.id.listaNotificaciones);
+            ListView listView = (ListView) findViewById(R.id.listaMisRutas);
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

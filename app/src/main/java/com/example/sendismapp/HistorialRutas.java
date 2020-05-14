@@ -72,7 +72,7 @@ public class HistorialRutas extends AppCompatActivity {
         Log.e("OMG", "Resultado lectura: " + rutas.size());
         ArrayAdapter<Ruta> adapter = new ArrayAdapter<Ruta>(this,
                 android.R.layout.simple_list_item_1, rutas);
-        ListView listView = (ListView) findViewById(R.id.listaNotificaciones);
+        ListView listView = (ListView) findViewById(R.id.listaHistorial);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

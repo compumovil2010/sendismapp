@@ -42,7 +42,6 @@ public class Notificacion {
 
     public  String toString(){
         return  "Usuario: " + this.usuario + '\n' +
-                "Fecha: " + this.fecha.toString() + '\n' +
                 "Ruta: " + this.ruta + '\n';
     }
 }
