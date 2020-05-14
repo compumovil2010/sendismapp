@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sendismapp.HistorialRutas">
+    tools:context=".Notificaciones">
 
     <TextView
         android:id="@+id/textNotificacion"
@@ -12,7 +12,7 @@
         android:layout_height="40dp"
         android:background="@color/colorSecondary"
         android:gravity="center"
-        android:text="Historial de Rutas"
+        android:text="Notificaciones"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,9 @@
 
     <ScrollView
         android:id="@+id/scrollNotificaciones"
-        android:layout_width="match_parent"
-        android:layout_height="583dp"
+        android:layout_width="394dp"
+        android:layout_height="664dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNotificacion">
@@ -30,37 +31,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ListView
                 android:id="@+id/listaNotificaciones"
                 android:layout_width="match_parent"
-                android:layout_height="566dp" />
+                android:layout_height="691dp" />
         </LinearLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/buttonCalificar"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:text="Calificar"
-        android:background="@color/colorSecondary"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonComentar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollNotificaciones"
-        />
-
-    <Button
-        android:id="@+id/buttonComentar"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:background="@color/colorSecondary"
-        android:text="Comentar"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollNotificaciones" />
 </androidx.constraintlayout.widget.ConstraintLayout>

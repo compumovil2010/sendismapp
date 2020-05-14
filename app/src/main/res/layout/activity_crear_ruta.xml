@@ -82,11 +82,11 @@
         android:id="@+id/spnDistancia"
         android:layout_width="wrap_content"
         android:layout_height="35sp"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textNotificacion"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textNotificacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Frecuencia en toma de datos"

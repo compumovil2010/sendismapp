@@ -87,7 +87,8 @@ public class MenuPrincipal extends AppCompatActivity {
         botonVerNotificaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MenuPrincipal.this,Notificaciones.class);
+                startActivity(intent);
             }
         });
 

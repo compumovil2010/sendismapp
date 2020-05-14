@@ -72,13 +72,15 @@ public class HistorialRutas extends AppCompatActivity {
         Log.e("OMG", "Resultado lectura: " + rutas.size());
         ArrayAdapter<Ruta> adapter = new ArrayAdapter<Ruta>(this,
                 android.R.layout.simple_list_item_1, rutas);
-        ListView listView = (ListView) findViewById(R.id.lista);
+        ListView listView = (ListView) findViewById(R.id.listaNotificaciones);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getBaseContext(), Calificacion.class);
                 intent.putExtra("ruta",rutas.get(position).getLlaveRutaActual());
+                intent.putExtra("nombreRuta",rutas.get(position).getNombre());
+                intent.putExtra("propietario",rutas.get(position).getLlavePropietario());
                 startActivity(intent);
             }
         });
