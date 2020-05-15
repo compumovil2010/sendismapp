@@ -25,6 +25,18 @@ public class Ruta {
         this.nombre =name;
     }
 
+    public Ruta(String nombre, String llavePropietario, String llaveRutaActual, double distancia, int dificultad, String duracion, int calificacion, List<LatLng> puntosRuta, List<PuntoDeInteres> puntosDeInteres) {
+        this.nombre = nombre;
+        this.llavePropietario = llavePropietario;
+        this.llaveRutaActual = llaveRutaActual;
+        this.distancia = distancia;
+        this.dificultad = dificultad;
+        this.duracion = duracion;
+        this.calificacion = calificacion;
+        this.puntosRuta = puntosRuta;
+        this.puntosDeInteres = puntosDeInteres;
+    }
+
     public Ruta()
     {
 
