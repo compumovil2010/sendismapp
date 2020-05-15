@@ -25,6 +25,7 @@ public class VerMisRutas extends AppCompatActivity {
 
     private MiRuta[] misRutas;
     private Ruta[] misRutas2;
+    private boolean archivoDisponible = false;
     static final String nombreArchivo = "rutas.json";
 
     @Override
@@ -38,7 +39,7 @@ public class VerMisRutas extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(misRutas2.length > 0)//Si el JSOn existe y tiene rutas almacenadas
+        if(archivoDisponible)//Si el JSOn existe y tiene rutas almacenadas
         {
             ArrayAdapter<Ruta> adapter = new ArrayAdapter<Ruta>(this,
                     android.R.layout.simple_list_item_1, misRutas2);
@@ -88,10 +89,11 @@ public class VerMisRutas extends AppCompatActivity {
         return json;
     }
 
-    public void llenarArreglo2() throws JSONException {
+    public void llenarArreglo2() throws JSONException
+    {
         String retorno = leerJson();
-        if(retorno != null)
-        {
+        if(retorno != null) {
+            archivoDisponible = true;
             Log.e("OMG", "Resultado otra funcion: " + retorno);
             JSONArray marcadoresGloriosos = new JSONArray(retorno);
             misRutas2 = new Ruta[marcadoresGloriosos.length()];
@@ -112,7 +114,8 @@ public class VerMisRutas extends AppCompatActivity {
         }
     }
 
-    public void iniciarArreglo() {
+    public void iniciarArreglo()
+    {
         misRutas = new MiRuta[15];
         String[] nombre = {
                 "Monserrate", "Guadalupe", "Chia", "Cajica", "Mosquera"
