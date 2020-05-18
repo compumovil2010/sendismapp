@@ -51,4 +51,6 @@ public class RouteAdapter extends BaseAdapter {
         //TODO: programmatically set imageview:src to the route image
         return convertView;
     }
+
+
 }

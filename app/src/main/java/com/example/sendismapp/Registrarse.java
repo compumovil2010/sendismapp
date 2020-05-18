@@ -75,6 +75,7 @@ public class Registrarse extends AppCompatActivity {
     private EditText altura;
     private EditText edad;
     private EditText correo;
+    private EditText nickname;
     private ImageButton imagen;
     private String uriImagen = null;
     private static final int PERMISSION_STORAGE_ID = 1;
@@ -96,6 +97,7 @@ public class Registrarse extends AppCompatActivity {
         edad = findViewById(R.id.edtEdad);
         correo = findViewById(R.id.etCorreoRegistro);
         imagen = findViewById(R.id.imgPerfil);
+        nickname = findViewById(R.id.edtNickName);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -123,7 +125,8 @@ public class Registrarse extends AppCompatActivity {
             String pes = peso.getText().toString();
             String alt = altura.getText().toString();
             String eda = edad.getText().toString();
-            if(camposNoVacios(nom,alt,pes,eda)){
+            String nick = nickname.getText().toString();
+            if(camposNoVacios(nom,alt,pes,eda,nick)){
                 Registrar(cor,con);
             }
         }
@@ -173,7 +176,7 @@ public class Registrarse extends AppCompatActivity {
         return true;
     }
 
-    private boolean camposNoVacios(String nom, String alt, String pes, String eda){
+    private boolean camposNoVacios(String nom, String alt, String pes, String eda, String nick){
         if(TextUtils.isEmpty(nom)){
             nombre.setError("No puede estar vacío");
             return false;
@@ -185,6 +188,9 @@ public class Registrarse extends AppCompatActivity {
             return false;
         }else if(TextUtils.isEmpty(eda)){
             edad.setError("No puede estar vacío");
+            return false;
+        }else if(TextUtils.isEmpty(nick)){
+            nickname.setError("Escribe un nickname!");
             return false;
         }
         return true;
@@ -256,7 +262,7 @@ public class Registrarse extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.i("Registro-Usuario", "Success");
                             if(uriImagen==null)uriImagen="El usuario no guardo foto de perfil";
-                            Usuario nuevo = new Usuario(cor,nom,con,spnExperiencia.getSelectedItem().toString(),uriImagen,Float.parseFloat(pes),Float.parseFloat(alt),Integer.parseInt(eda),nacionalidad.getSelectedItem().toString());
+                            Usuario nuevo = new Usuario(cor,nom,con,spnExperiencia.getSelectedItem().toString(),uriImagen,Float.parseFloat(pes),Float.parseFloat(alt),Integer.parseInt(eda),nacionalidad.getSelectedItem().toString(),nickname.getText().toString());
                             FirebaseUser user = mAuth.getCurrentUser();
                             myRef = database.getReference(PATH_USERS+user.getUid());
                             myRef.setValue(nuevo);

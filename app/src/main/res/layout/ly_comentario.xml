@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:id="@+id/vistaComentario"
     tools:context=".Comentario">
 
     <EditText
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:ems="12"
+        android:hint="@string/etComentario"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btAnadirImagen"
+        android:onClick="clickImagen"
         app:layout_constraintStart_toStartOf="@id/etComentario"
         app:layout_constraintTop_toBottomOf="@id/etComentario" />
 
@@ -32,7 +35,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btComentar"
+        android:onClick="botonComentar"
         app:layout_constraintEnd_toEndOf="@id/etComentario"
         app:layout_constraintTop_toBottomOf="@id/etComentario" />
+
+    <ImageView
+        android:id="@+id/imgComentarioImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        app:layout_constraintStart_toStartOf="@id/etComentario"
+        app:layout_constraintTop_toBottomOf="@id/btAnadirImagen"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

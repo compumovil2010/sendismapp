@@ -70,13 +70,14 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonCrearRuta" />
 
     <Button
-        android:id="@+id/buttonBuscarAmigo"
+        android:id="@+id/buttonComentarProblema"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
-        android:text="Buscar un Amigo"
+        android:text="comentar problema"
+        android:onClick="botonComentarProblema"
         android:background="@color/colorSecondary"
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +96,7 @@
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonBuscarAmigo" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonComentarProblema" />
 
     <Button
         android:id="@+id/buttonNotificacion"

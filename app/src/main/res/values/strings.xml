@@ -115,5 +115,8 @@
     <string name="duracionRuta">Duración formato HH:MM</string>
     <string name="calificacionRuta">Calificación 1-5</string>
     <string name="txtVNacionalidad">Nacionalidad:</string>
+    <string name="etEscribeCalificacion">Escribe sobre la calificación</string>
+    <string name="etComentario">¿Cúal fue el problema?</string>
+    <string name="edtNickName">Nickname</string>
     <!-- =========== -->
 </resources>
