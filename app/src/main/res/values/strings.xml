@@ -117,5 +117,8 @@
     <string name="txtVNacionalidad">Nacionalidad:</string>
     <string name="title_activity_pre_visualizar_ruta">Map</string>
     <string name="btnEmpezarRecorrido">Empezar recorrido</string>
-    <!-- =========== -->
+    <string name="etEscribeCalificacion">Escribe sobre la calificación</string>
+    <string name="etComentario">¿Cúal fue el problema?</string>
+    <string name="edtNickName">Nickname</string>
+
 </resources>

@@ -77,6 +77,16 @@
                 android:inputType="textPassword"
                 android:hint="@string/txtFPassword2" />
 
+            <EditText
+                android:id="@+id/edtNickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:inputType="textPersonName"
+                android:hint="@string/edtNickName" />
+
             <TextView
                 android:id="@+id/txtVNacionalidad"
                 android:layout_width="wrap_content"

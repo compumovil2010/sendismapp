@@ -8,11 +8,12 @@ public class Usuario {
     private String experiencia;
     private String nacionalidad;
     private String imagen;
+    private String nickname;
     private float peso;
     private float altura;
     private int edad;
 
-    public Usuario(String correo, String nombre, String contrasena, String experiencia, String imagen, float peso, float altura, int edad, String nacionalidad) {
+    public Usuario(String correo, String nombre, String contrasena, String experiencia, String imagen, float peso, float altura, int edad, String nacionalidad, String nickname) {
         this.correo = correo;
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -22,6 +23,7 @@ public class Usuario {
         this.altura = altura;
         this.edad = edad;
         this.nacionalidad = nacionalidad;
+        this.nickname = nickname;
     }
 
     public String getCorreo() {
@@ -94,5 +96,13 @@ public class Usuario {
 
     public void setNacionalidad(String nacionalidad){
         this.nacionalidad = nacionalidad;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

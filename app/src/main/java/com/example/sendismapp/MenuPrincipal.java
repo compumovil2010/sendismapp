@@ -11,6 +11,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.sendismapp.logic.Notificacion;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -20,7 +21,6 @@ public class MenuPrincipal extends AppCompatActivity {
     private Button botonVerMisRutas;
     private Button botonCrearRutas;
     private Button botonHistorialRutas;
-    private Button botonBuscarAmigo;
     private Button botonVerPerfil;
     private Button botonVerNotificaciones;
     private FirebaseAuth mAuth;
@@ -37,7 +37,6 @@ public class MenuPrincipal extends AppCompatActivity {
         botonVerMisRutas = findViewById(R.id.buttonVerRutas);
         botonCrearRutas = findViewById(R.id.buttonCrearRuta);
         botonHistorialRutas = findViewById(R.id.buttonHistorial);
-        botonBuscarAmigo = findViewById(R.id.buttonBuscarAmigo);
         botonVerPerfil = findViewById(R.id.buttonPerfil);
         botonVerNotificaciones = findViewById(R.id.buttonNotificacion);
 
@@ -71,12 +70,6 @@ public class MenuPrincipal extends AppCompatActivity {
 
             }
         });
-        botonBuscarAmigo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         botonVerPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +80,7 @@ public class MenuPrincipal extends AppCompatActivity {
         botonVerNotificaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuPrincipal.this,Notificaciones.class);
+                Intent intent = new Intent(MenuPrincipal.this, Notificaciones.class);
                 startActivity(intent);
             }
         });
@@ -138,4 +131,8 @@ public class MenuPrincipal extends AppCompatActivity {
         }
     }
 
+    public void botonComentarProblema(View view) {
+        Intent intent = new Intent(MenuPrincipal.this, Comentario.class);
+        startActivity(intent);
+    }
 }
