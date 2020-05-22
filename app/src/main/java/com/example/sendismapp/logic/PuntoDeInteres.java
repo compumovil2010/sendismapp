@@ -1,6 +1,8 @@
 package com.example.sendismapp.logic;
 
-public class PuntoDeInteres
+import java.io.Serializable;
+
+public class PuntoDeInteres implements Serializable
 {
     private Double latitud;
     private Double longitud;

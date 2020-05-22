@@ -115,5 +115,7 @@
     <string name="duracionRuta">Duración formato HH:MM</string>
     <string name="calificacionRuta">Calificación 1-5</string>
     <string name="txtVNacionalidad">Nacionalidad:</string>
+    <string name="title_activity_pre_visualizar_ruta">Map</string>
+    <string name="btnEmpezarRecorrido">Empezar recorrido</string>
     <!-- =========== -->
 </resources>

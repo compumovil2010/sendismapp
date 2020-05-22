@@ -2,6 +2,7 @@ package com.example.sendismapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,13 +29,14 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class VerMisRutas extends AppCompatActivity {
 
-    private MiRuta[] misRutas;
     private List<Ruta> rutasGlobales = new ArrayList<Ruta>();
     private boolean archivoDisponible = false;
     static final String nombreArchivo = "rutas2.json";
@@ -63,29 +65,20 @@ public class VerMisRutas extends AppCompatActivity {
         if(archivoDisponible)//Si el JSOn existe y tiene rutas almacenadas
         {
             listView.setAdapter(adaptador);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getBaseContext(), verRuta.class);
-                    startActivity(intent);
-                }
-            });
         }
         else
         {
             Toast.makeText(this,"No se han creado rutas de forma local", Toast.LENGTH_LONG).show();
         }
-        /*ArrayAdapter<MiRuta> adapter = new ArrayAdapter<MiRuta>(this,
-                android.R.layout.simple_list_item_1, misRutas);
-        ListView listView = (ListView) findViewById(R.id.lista);
-        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(), verRuta.class);
+                //Log.e("Posicion",rutasGlobales.get(position).getNombre());
+                Intent intent = new Intent(getBaseContext(), PreVisualizarRuta.class);
+                intent.putExtra("RutaSeleccionada", (Parcelable) rutasGlobales.get(position));
                 startActivity(intent);
             }
-        });*/
+        });
     }
 
     public String leerJson() {
@@ -148,8 +141,6 @@ public class VerMisRutas extends AppCompatActivity {
                 int dificultad = 0;
                 String duracion = "Corta";
                 int calificacion = 0;
-                List<LatLng> puntosRuta = new ArrayList<LatLng>();
-                List<PuntoDeInteres> puntosDeInteres = new ArrayList<PuntoDeInteres>();
 
                 for(DataSnapshot singleSnapshot:dataSnapshot.getChildren())//Bolsita de usuarios
                 {
@@ -158,6 +149,8 @@ public class VerMisRutas extends AppCompatActivity {
                     for(Map.Entry<String, Object> entidad : IDUserxRutas.entrySet())//Bolsita de Rutas
                     {
                         archivoDisponible = true;
+                        List<LatLng> puntosRuta = new ArrayList<LatLng>();
+                        List<PuntoDeInteres> puntosDeInteres = new ArrayList<PuntoDeInteres>();
                         Map<String, Object> mapRutas = (Map<String, Object>) entidad.getValue();
                         Log.e("ARR: ", "Encontro rutas: " + mapRutas);
                         Log.e("ARR2: ", "Encontro uina llave ruta: " + mapRutas.get("llaveRutaActual"));
@@ -165,11 +158,28 @@ public class VerMisRutas extends AppCompatActivity {
                         llaveRutaActual = (String)mapRutas.get("llaveRutaActual");
                         distancia = ((Long)mapRutas.get("distancia")).doubleValue();
                         duracion = (String)mapRutas.get("duracion");
-                        puntosDeInteres = (List<PuntoDeInteres>)mapRutas.get("puntosDeInteres");
                         nombre = (String)mapRutas.get("nombre");
                         dificultad = ((Long)mapRutas.get("dificultad")).intValue();
-                        puntosRuta = (List<LatLng>)mapRutas.get("puntosRuta");
                         llavePropietario = (String)mapRutas.get("llavePropietario");
+
+                        //Manejo de Listas de coordenadas
+                        List<Object> puntosInutiles = (List<Object>) mapRutas.get("puntosRuta");
+                        assert puntosInutiles != null;
+                        for(Object obj : puntosInutiles)
+                        {
+                            Map<String, Object> mapAux = (Map<String, Object>) obj;
+                            LatLng latLng = new LatLng((double) mapAux.get("latitude"), (double) mapAux.get("longitude"));
+                            puntosRuta.add(latLng);
+                        }
+                        List<Object> marcadoresInutiles = (List<Object>) mapRutas.get("puntosDeInteres");
+                        assert marcadoresInutiles != null;
+                        for(Object obj2 : marcadoresInutiles)
+                        {
+                            Map<String, Object> mapAux = (Map<String, Object>) obj2;
+                            int icono = ((Long) Objects.requireNonNull(mapAux.get("icono"))).intValue();
+                            PuntoDeInteres puntoNuevo = new PuntoDeInteres((double) mapAux.get("latitud"), (double) mapAux.get("longitud"),icono);
+                            puntosDeInteres.add(puntoNuevo);
+                        }
                         Ruta rutaLeida = new Ruta(nombre, llavePropietario, llaveRutaActual, distancia, dificultad, duracion, calificacion, puntosRuta, puntosDeInteres);
                         rutasActuales.add(rutaLeida);
                         adaptador.notifyDataSetChanged();
@@ -186,7 +196,7 @@ public class VerMisRutas extends AppCompatActivity {
         });
     }
 
-    public void iniciarArreglo()
+    /*public void iniciarArreglo()
     {
         misRutas = new MiRuta[15];
         String[] nombre = {
@@ -206,5 +216,5 @@ public class VerMisRutas extends AppCompatActivity {
             misRutas[i] = new MiRuta(nombre[i % 5], calificacion, hora, minutos, segundos);
 
         }
-    }
+    }*/
 }

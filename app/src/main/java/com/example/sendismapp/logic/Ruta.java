@@ -1,13 +1,21 @@
 package com.example.sendismapp.logic;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Ruta {
+public class Ruta implements Serializable, Parcelable {
 
     private String nombre;
     private String llavePropietario;
@@ -140,4 +148,68 @@ public class Ruta {
     public void setPuntosDeInteres(List<PuntoDeInteres> puntosDeInteres) {
         this.puntosDeInteres = puntosDeInteres;
     }
+
+    /*Parceable*/
+    protected Ruta(Parcel in) {
+        nombre = in.readString();
+        llavePropietario = in.readString();
+        llaveRutaActual = in.readString();
+        distancia = in.readDouble();
+        dificultad = in.readInt();
+        duracion = in.readString();
+        calificacion = in.readInt();
+        if (in.readByte() == 0x01) {
+            puntosRuta = new ArrayList<LatLng>();
+            in.readList(puntosRuta, LatLng.class.getClassLoader());
+        } else {
+            puntosRuta = null;
+        }
+        if (in.readByte() == 0x01) {
+            puntosDeInteres = new ArrayList<PuntoDeInteres>();
+            in.readList(puntosDeInteres, PuntoDeInteres.class.getClassLoader());
+        } else {
+            puntosDeInteres = null;
+        }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(llavePropietario);
+        dest.writeString(llaveRutaActual);
+        dest.writeDouble(distancia);
+        dest.writeInt(dificultad);
+        dest.writeString(duracion);
+        dest.writeInt(calificacion);
+        if (puntosRuta == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(puntosRuta);
+        }
+        if (puntosDeInteres == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(puntosDeInteres);
+        }
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Ruta> CREATOR = new Parcelable.Creator<Ruta>() {
+        @Override
+        public Ruta createFromParcel(Parcel in) {
+            return new Ruta(in);
+        }
+
+        @Override
+        public Ruta[] newArray(int size) {
+            return new Ruta[size];
+        }
+    };
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sendismapp">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -24,10 +25,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Notificaciones"></activity>
-        <activity android:name=".GuardarRutaJSON" />
-        <activity android:name=".ImagenPerfil" />
-        <activity android:name=".CambiarContrasena" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,6 +38,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".PreVisualizarRuta"
+            android:label="@string/title_activity_pre_visualizar_ruta"></activity>
+        <activity android:name=".Notificaciones" />
+        <activity android:name=".GuardarRutaJSON" />
+        <activity android:name=".ImagenPerfil" />
+        <activity android:name=".CambiarContrasena" />
         <activity
             android:name=".Mapa_crear_ruta"
             android:label="@string/title_activity_mapa_crear_ruta" /> <!-- Manifest Johan -->
