@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
 import android.app.Dialog;
+import android.app.IntentService;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -12,6 +13,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -22,13 +26,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Calificacion extends AppCompatActivity {
 
     RatingBar califica;
     Dialog ver;
+    EditText cometario;
     private Button botonCalificacion;
+    private RadioGroup dificultad;
+    private RadioButton seleccion;
     private String ruta;
     private String nombreRuta;
     private String propietario;
@@ -52,8 +60,10 @@ public class Calificacion extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         ver = new Dialog(this);
-        botonCalificacion = findViewById(R.id.btHacerCalificacion);
         ver.setContentView(R.layout.ly_calificacion);
+        cometario = ver.findViewById(R.id.etComentarioCalificacion);
+        botonCalificacion = ver.findViewById(R.id.btHacerCalificacion);
+        dificultad = ver.findViewById(R.id.rbGroup);
         califica = ver.findViewById(R.id.estrellas);
         califica.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
@@ -70,20 +80,26 @@ public class Calificacion extends AppCompatActivity {
     }
 
     public void prueba(View view) {
+        int radioId = dificultad.getCheckedRadioButtonId();
+        seleccion = ver.findViewById(radioId);
         FirebaseUser user = mAuth.getCurrentUser();
         myRef = database.getReference(PATH_CALI+ruta+"/"+user.getUid());
         Calificacionc aux = new Calificacionc();
         aux.setUsuario(user.getUid());
         aux.setCalificacion(califica.getRating());
+        aux.setComentario(cometario.getText().toString());
+        aux.setDificultad(seleccion.getText().toString());
+
         myRef.setValue(aux);
 
 
 
-        notificacion();
+        escribirNotificacion();
+        Toast.makeText(this, seleccion.getText(),Toast.LENGTH_SHORT).show();
         finish();
     }
 
-    public void notificacion ()
+   /* public void notificacion ()
     {
         NotificationManager nNotificacionManager = (NotificationManager) getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
         //mBuilder = new NotificationCompat.Builder(this,channelID);
@@ -97,7 +113,7 @@ public class Calificacion extends AppCompatActivity {
             channel.setDescription(description);
             nNotificacionManager.createNotificationChannel(channel);
             /*NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);*/
+            notificationManager.createNotificationChannel(channel);
             mBuilder = new NotificationCompat.Builder(this,channelID);
 
         }
@@ -117,17 +133,18 @@ public class Calificacion extends AppCompatActivity {
         mBuilder.setAutoCancel(true);
 
         nNotificacionManager.notify(notificationID,mBuilder.build());
-    }
+    }*/
 
     public void escribirNotificacion()
     {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         FirebaseUser user = mAuth.getCurrentUser();
         myRef = database.getReference(PATH_NOTI+propietario+"/"+ruta+"/"+user.getUid());
         Notificacion aux = new Notificacion();
         aux.setUsuario(user.getUid());
-        aux.setFecha(new Date());
+        aux.setFecha(dateFormat.format(new Date()));
         aux.setRuta(nombreRuta);
         myRef.setValue(aux);
-        Toast.makeText(this,aux.getFecha().toString(),Toast.LENGTH_SHORT).show();
+
     }
 }

@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Bienvenido a SendisMapp");
+        Intent intent = new Intent(MainActivity.this, Servicio.class);
+        startService(intent);
 
     }
 
@@ -36,4 +38,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MenuPrincipal.class);
         startActivity(intent);
     }
+
 }

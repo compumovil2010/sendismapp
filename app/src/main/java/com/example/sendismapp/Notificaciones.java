@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class Notificaciones extends AppCompatActivity {
@@ -67,6 +68,7 @@ public class Notificaciones extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference(PATH_NOTIFICATION+user.getUid());
+
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -75,12 +77,12 @@ public class Notificaciones extends AppCompatActivity {
                     for (DataSnapshot single2 : single.getChildren()) {
                         Notificacion aux= new Notificacion();
                         aux.setRuta(single2.child("ruta").getValue().toString());
-                        //aux.setFecha(Date.valueOf(single2.child("fecha").getValue().toString()));
+                        aux.setFecha(single2.child("fecha").getValue().toString());
                         aux.setUsuario(single2.child("usuario").getValue().toString());
                         notificaciones.add(aux);
 
                         single.getKey();
-                        Log.e("OMG", "Resultado lectura: " + single2.child("ruta").getValue().toString());
+                        //Log.e("OMG", "Resultado lectura: " + aux.getFecha().toString());
                         //Log.e("OMG", "Resultado lectura: " + rutas.size());
                     }
                 }

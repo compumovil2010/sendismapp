@@ -5,12 +5,13 @@ import java.util.Date;
 public class Notificacion {
 
     private String usuario;
-    private Date fecha;
+    private String fecha;
     private String ruta;
 
-    public Notificacion(String usuario, Date fecha,String ruta) {
+    public Notificacion(String usuario, String fecha,String ruta) {
         this.usuario = usuario;
         this.fecha = fecha;
+        this.ruta = ruta;
     }
     public Notificacion(){
 
@@ -24,11 +25,11 @@ public class Notificacion {
         this.usuario = usuario;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -42,6 +43,7 @@ public class Notificacion {
 
     public  String toString(){
         return  "Usuario: " + this.usuario + '\n' +
-                "Ruta: " + this.ruta + '\n';
+                "Ruta: " + this.ruta + '\n'+
+                "Fecha:" + this.fecha;
     }
 }
