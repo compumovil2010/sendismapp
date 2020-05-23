@@ -58,6 +58,7 @@ public class Servicio extends IntentService {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 notificacion();
             }
 
@@ -89,7 +90,7 @@ public class Servicio extends IntentService {
         mBuilder = new NotificationCompat.Builder(this,channelID);
         mBuilder.setSmallIcon(R.drawable.nn);
         mBuilder.setContentTitle("Calificacion");
-        mBuilder.setContentText("Un usuario a calificado tu ruta : " + "JAJA");
+        mBuilder.setContentText("Un usuario a calificado tu ruta ");
         mBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         //escribirNotificacion();
 
@@ -104,17 +105,7 @@ public class Servicio extends IntentService {
         nNotificacionManager.notify(notificationID,mBuilder.build());
     }
 
-    public void escribirNotificacion()
-    {
-        FirebaseUser user = mAuth.getCurrentUser();
-        //myRef = database.getReference(PATH_NOTI+propietario+"/"+ruta+"/"+user.getUid());
-        Notificacion aux = new Notificacion();
-        aux.setUsuario(user.getUid());
-        //aux.setFecha(new Date());
-        //aux.setRuta(nombreRuta);
-        myRef.setValue(aux);
-        Toast.makeText(this,aux.getFecha().toString(),Toast.LENGTH_SHORT).show();
-    }
+
 
 
 
