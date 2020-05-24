@@ -62,7 +62,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
-        android:text="Historial de Rutas"
+        android:text="@string/historial_de_rutas"
         android:background="@color/colorSecondary"
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"

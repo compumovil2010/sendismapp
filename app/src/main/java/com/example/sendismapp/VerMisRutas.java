@@ -176,7 +176,7 @@ public class VerMisRutas extends AppCompatActivity {
                         for(Object obj2 : marcadoresInutiles)
                         {
                             Map<String, Object> mapAux = (Map<String, Object>) obj2;
-                            int icono = ((Long) Objects.requireNonNull(mapAux.get("icono"))).intValue();
+                            String icono = (String) mapAux.get("icono");
                             PuntoDeInteres puntoNuevo = new PuntoDeInteres((double) mapAux.get("latitud"), (double) mapAux.get("longitud"),icono);
                             puntosDeInteres.add(puntoNuevo);
                         }

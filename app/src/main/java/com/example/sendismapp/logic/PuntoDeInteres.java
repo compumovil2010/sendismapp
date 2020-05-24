@@ -6,14 +6,14 @@ public class PuntoDeInteres implements Serializable
 {
     private Double latitud;
     private Double longitud;
-    private int icono;//R.id.icono identificador del icono dentro del codigo
+    private String icono;//R.id.icono identificador del icono dentro del codigo
 
     public PuntoDeInteres()
     {
 
     }
 
-    public PuntoDeInteres(Double latitud, Double longitud, int icono) {
+    public PuntoDeInteres(Double latitud, Double longitud, String icono) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.icono = icono;
@@ -27,7 +27,7 @@ public class PuntoDeInteres implements Serializable
         return longitud;
     }
 
-    public int getIcono() {
+    public String getIcono() {
         return icono;
     }
 
@@ -39,7 +39,7 @@ public class PuntoDeInteres implements Serializable
         this.longitud = longitud;
     }
 
-    public void setIcono(int icono) {
+    public void setIcono(String icono) {
         this.icono = icono;
     }
 }

@@ -8,6 +8,9 @@
     <string name="edtText">Pon un nombre a tu ruta! :)</string>
     <string name="txtVherramientasEdicion">Edición de puntos de interés</string>
     <string name="popUpTitulo">Como debe usar los marcadores</string>
+    <string name="popUpInfoFinalTitulo">Felicidades, terminaste la ruta</string>
+    <string name="popUpInfoFinalTitulo2">Ahora eres libre de calificarla</string>
+    <string name="popUpInfoFinalTitulo3"> O de comentarla, si lo deseas, desde tú historial de rutas recorridas</string>
     <string name="expIconoCaminante">Use este icono para marcar un punto en el recorrido que sea difícil de transitar</string>
     <string name="expIconoAgua">Use este icono para marcar un punto en el recorrido que sea ideal para rehidratarse</string>
     <string name="expIconoFoto">Use este icono para marcar un punto en el recorrido que sea ideal para tomar una fotografía</string>
@@ -120,5 +123,6 @@
     <string name="etEscribeCalificacion">Escribe sobre la calificación</string>
     <string name="etComentario">¿Cúal fue el problema?</string>
     <string name="edtNickName">Nickname</string>
+    <string name="historial_de_rutas">Historial de Rutas</string>
 
 </resources>

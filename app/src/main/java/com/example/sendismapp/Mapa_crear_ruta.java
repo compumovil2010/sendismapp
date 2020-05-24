@@ -137,7 +137,8 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
     private List<PuntoDeInteres> puntosDeInteres = new ArrayList<PuntoDeInteres>();
     private List<Marker> marcadoresRuta = new ArrayList<>();
     private JSONArray marcadores = new JSONArray();
-    private int imagenSeleccionada = 0;
+    private String imagenSeleccionada = "";
+    private int resID = 0;
 
     /*Experimento para manipular JSON*/
     private Context parent = this;
@@ -246,7 +247,7 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         selecAgua.setVisibility(View.INVISIBLE);
         selecEnergia.setVisibility(View.INVISIBLE);
         selecPaisaje.setVisibility(View.INVISIBLE);
-        imagenSeleccionada = R.drawable.m_dificultad;
+        imagenSeleccionada = "m_dificultad";
 
         /*Uso de camara*/
         btnFoto = findViewById(R.id.btnFoto);
@@ -429,7 +430,8 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
             public void onMapLongClick(LatLng latLng) {
                 int height = 100;
                 int width = 100;
-                Bitmap b = BitmapFactory.decodeResource(getResources(), imagenSeleccionada);
+                resID = getResources().getIdentifier(imagenSeleccionada , "drawable", getPackageName());
+                Bitmap b = BitmapFactory.decodeResource(getResources(), resID);
                 Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
                 BitmapDescriptor smallMarkerIcon = BitmapDescriptorFactory.fromBitmap(smallMarker);
                 mMap.addMarker(new MarkerOptions().position(latLng).title(geoCoderSearchLatLang(latLng)).icon(smallMarkerIcon));
@@ -487,11 +489,13 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
      **/
 
     public void clickMDificil(View v) {
+        String nameIcon = "m_dificultad";
         selecDificil.setVisibility(View.VISIBLE);
         selecAgua.setVisibility(View.INVISIBLE);
         selecEnergia.setVisibility(View.INVISIBLE);
         selecPaisaje.setVisibility(View.INVISIBLE);
-        imagenSeleccionada = R.drawable.m_dificultad;
+        //imagenSeleccionada = R.drawable.m_dificultad;
+        imagenSeleccionada = "m_dificultad";
     }
 
     public void clickMAgua(View v) {
@@ -499,7 +503,7 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         selecAgua.setVisibility(View.VISIBLE);
         selecEnergia.setVisibility(View.INVISIBLE);
         selecPaisaje.setVisibility(View.INVISIBLE);
-        imagenSeleccionada = R.drawable.water;
+        imagenSeleccionada = "water";
     }
 
     public void clickMEnergia(View v) {
@@ -507,7 +511,7 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         selecAgua.setVisibility(View.INVISIBLE);
         selecEnergia.setVisibility(View.VISIBLE);
         selecPaisaje.setVisibility(View.INVISIBLE);
-        imagenSeleccionada = R.drawable.m_energia;
+        imagenSeleccionada = "m_energia";
     }
 
     public void clickMPaisaje(View v) {
@@ -515,7 +519,7 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         selecAgua.setVisibility(View.INVISIBLE);
         selecEnergia.setVisibility(View.INVISIBLE);
         selecPaisaje.setVisibility(View.VISIBLE);
-        imagenSeleccionada = R.drawable.m_paisaje;
+        imagenSeleccionada = "m_paisaje";
     }
 
     /**

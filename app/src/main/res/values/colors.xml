@@ -11,6 +11,8 @@
     <color name="white">#FFFFFF</color>
     <color name="emptyStar">#000000</color>
     <color name="blanco">#FFFFFF</color>
+    <color name="amarilo">#E1B225</color>
+    <color name="rojo">#A83F0F</color>
 
     <color name="estrellaVacia">#000000</color>
     <color name="transparente1">#bb0099cc</color>
