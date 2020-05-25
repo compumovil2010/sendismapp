@@ -426,16 +426,18 @@ public class PreVisualizarRuta extends FragmentActivity implements OnMapReadyCal
                 Map<String, Object> mapaHistorial = (Map<String, Object>) dataSnapshot.getValue();
                 Log.e("ERR23: ", "Encontro un ID: " + mapaHistorial.get(user.getUid()));
                 rutasRecorridas = (String) mapaHistorial.get(user.getUid());
-                String[] splitOn = rutasRecorridas.split(",");
-                for(String iter : splitOn)
+                if(rutasRecorridas != null)
                 {
-                    if(iter.equals(rutaSeleccionada.getLlaveRutaActual()))
+                    String[] splitOn = rutasRecorridas.split(",");
+                    for(String iter : splitOn)
                     {
-                        Log.e("ERR24", "La ruta ya fue recorrida :(!!!!");
-                        rutaYaFueRecorrida = true;
+                        if(iter.equals(rutaSeleccionada.getLlaveRutaActual()))
+                        {
+                            Log.e("ERR24", "La ruta ya fue recorrida :(!!!!");
+                            rutaYaFueRecorrida = true;
+                        }
                     }
                 }
-
             }
 
             @Override
