@@ -35,6 +35,7 @@ public class Servicio extends IntentService {
     NotificationCompat.Builder mBuilder;
     int notificationID = 1;
     String channelID = "My channel";
+    int contador=0;
 
     public Servicio() {
         super("Servicio");
@@ -59,7 +60,16 @@ public class Servicio extends IntentService {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                notificacion();
+                if (contador == 0)
+                {
+                    contador++;
+                }
+                else
+                {
+                    notificacion();
+                }
+
+
             }
 
             @Override

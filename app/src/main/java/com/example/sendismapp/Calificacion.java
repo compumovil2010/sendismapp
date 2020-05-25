@@ -95,7 +95,6 @@ public class Calificacion extends AppCompatActivity {
 
 
         escribirNotificacion();
-        Toast.makeText(this, seleccion.getText(),Toast.LENGTH_SHORT).show();
         finish();
     }
 

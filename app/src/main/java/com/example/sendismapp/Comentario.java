@@ -172,7 +172,7 @@ public class Comentario extends AppCompatActivity {
 
     private boolean cValido(String contra) {
         if(TextUtils.isEmpty(contra)){
-            comentario.setError("Comenta algo! bruto!");
+            comentario.setError("Comenta algo! ");
             return false;
         }else if(uriImagen == null){
             btImagen.setTextColor(Color.parseColor("red"));

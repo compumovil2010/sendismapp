@@ -1,6 +1,7 @@
 package com.example.sendismapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +36,10 @@ public class HistorialRutas extends AppCompatActivity {
     private DatabaseReference myRef;
     public static final String PATH_ROUTES="rutas/";
     private ArrayList<Ruta> rutas;
+    private String ruta = " ";
+    private String nombreRuta = " ";
+    private String propietario = " ";
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,35 +59,90 @@ public class HistorialRutas extends AppCompatActivity {
         botonCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HistorialRutas.this, Calificacion.class);
-                startActivity(intent);
+                if (ruta != " ")
+                {
+                    Intent intent = new Intent(HistorialRutas.this, Calificacion.class);
+                    intent.putExtra("ruta",ruta);
+                    intent.putExtra("nombreRuta",nombreRuta);
+                    intent.putExtra("propietario",propietario);
+                    ruta = " ";
+                    nombreRuta= " ";
+                    propietario = " ";
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(HistorialRutas.this, "No ha seleccionado ninguna ruta" ,Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
         botonComentar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HistorialRutas.this, Comentario.class);
-                startActivity(intent);
+                if (ruta != " ")
+                {
+                    Intent intent = new Intent(HistorialRutas.this, Comentario.class);
+                    intent.putExtra("ruta",ruta);
+                    intent.putExtra("nombreRuta",nombreRuta);
+                    intent.putExtra("propietario",propietario);
+                    ruta = " ";
+                    nombreRuta= " ";
+                    propietario = " ";
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(HistorialRutas.this, "No ha seleccionado ninguna ruta" ,Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mostrarArreglo();
+
+    }
+
+
     public void mostrarArreglo ()
     {
         Log.e("OMG", "Resultado lectura: " + rutas.size());
         ArrayAdapter<Ruta> adapter = new ArrayAdapter<Ruta>(this,
                 android.R.layout.simple_list_item_1, rutas);
-        ListView listView = (ListView) findViewById(R.id.listaHistorial);
+        listView = (ListView) findViewById(R.id.listaHistorial);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(), Calificacion.class);
-                intent.putExtra("ruta",rutas.get(position).getLlaveRutaActual());
-                intent.putExtra("nombreRuta",rutas.get(position).getNombre());
-                intent.putExtra("propietario",rutas.get(position).getLlavePropietario());
-                startActivity(intent);
+
+                try{
+                    for (int ctr=0;ctr<=rutas.size();ctr++)
+                    {
+                        if(position==ctr)
+                        {
+
+                            listView.getChildAt(ctr).setBackgroundColor(Color.rgb(137,206,250));
+                            ruta = rutas.get(position).getLlaveRutaActual();
+                            nombreRuta= rutas.get(position).getNombre();
+                            propietario=rutas.get(position).getLlavePropietario();
+
+                        }
+                        else
+                            {
+                                listView.getChildAt(ctr).setBackgroundColor(Color.WHITE);
+                            }
+                    }
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
             }
         });
     }
@@ -135,7 +196,6 @@ public class HistorialRutas extends AppCompatActivity {
 
             }
         });
-
-
     }
+
 }

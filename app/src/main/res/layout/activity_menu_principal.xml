@@ -74,41 +74,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="30dp"
-        android:text="comentar problema"
-        android:onClick="botonComentarProblema"
         android:background="@color/colorSecondary"
+        android:onClick="botonComentarProblema"
+        android:text="Ver notificaciones Comentarios"
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonHistorial" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonPerfil" />
 
     <Button
         android:id="@+id/buttonPerfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="30dp"
-        android:text="Ver Perfil"
         android:background="@color/colorSecondary"
+        android:text="Ver Perfil"
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonComentarProblema" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonHistorial" />
 
     <Button
         android:id="@+id/buttonNotificacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="30dp"
-        android:text="Ver Notifiaciones"
         android:background="@color/colorSecondary"
+        android:text="Ver Notificaciones Calificaciones"
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonComentarProblema" />
 </androidx.constraintlayout.widget.ConstraintLayout>

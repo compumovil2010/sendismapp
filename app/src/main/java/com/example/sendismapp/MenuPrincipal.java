@@ -132,7 +132,7 @@ public class MenuPrincipal extends AppCompatActivity {
     }
 
     public void botonComentarProblema(View view) {
-        Intent intent = new Intent(MenuPrincipal.this, Comentario.class);
+        Intent intent = new Intent(MenuPrincipal.this, Notificacionc.class);
         startActivity(intent);
     }
 }

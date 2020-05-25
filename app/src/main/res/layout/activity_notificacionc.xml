@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Notificaciones">
+    tools:context=".Notificacionc">
 
     <TextView
-        android:id="@+id/textNotificacion"
+        android:id="@+id/textoNoti"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/colorSecondary"
         android:gravity="center"
-        android:text="Notificaciones Calificaciones"
+        android:text="Notificaciones Comentarios"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/scrollNotificaciones"
+        android:id="@+id/scrollNoti"
         android:layout_width="394dp"
         android:layout_height="664dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,9 +34,10 @@
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/listaNotifi"
+                android:id="@+id/listaNotificacionesComentarios"
                 android:layout_width="match_parent"
                 android:layout_height="691dp" />
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
