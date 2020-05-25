@@ -93,6 +93,7 @@ public class Servicio extends IntentService {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null)
         {
+
             myRef = database.getReference("notificacionesC/"+user.getUid());
             myRef.addValueEventListener(new ValueEventListener() {
                 @Override

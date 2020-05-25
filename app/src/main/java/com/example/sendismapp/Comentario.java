@@ -193,6 +193,7 @@ public class Comentario extends AppCompatActivity {
 
     public void escribirNotificacion()
     {
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         FirebaseUser user = mAuth.getCurrentUser();
         myRef = database.getReference("notificacionesC/"+propietario+"/"+ruta+"/"+user.getUid());

@@ -136,6 +136,7 @@ public class Calificacion extends AppCompatActivity {
 
     public void escribirNotificacion()
     {
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         FirebaseUser user = mAuth.getCurrentUser();
         myRef = database.getReference(PATH_NOTI+propietario+"/"+ruta+"/"+user.getUid());

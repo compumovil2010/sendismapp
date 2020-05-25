@@ -78,7 +78,7 @@
         android:layout_marginRight="30dp"
         android:background="@color/colorSecondary"
         android:onClick="botonComentarProblema"
-        android:text="Ver notificaciones Comentarios"
+        android:text="Ver notificaciones Comentarios "
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -44,7 +44,7 @@ public class Notificaciones extends AppCompatActivity {
 
     public void mostrarArreglo ()
     {
-        Log.e("OMG", "Resultado lectura: " + notificaciones.size());
+        Log.e("OMG", "Resultado  lectura: " + notificaciones.size());
         ArrayAdapter<Notificacion> adapter = new ArrayAdapter<Notificacion>(this,
                 android.R.layout.simple_list_item_1, notificaciones);
         ListView listView = (ListView) findViewById(R.id.listaNotifi);
