@@ -31,6 +31,8 @@ public class Notificacionc extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificacionc);
+        notificaciones = new ArrayList<Notificacion>();
+        leerFB();
     }
 
     public void mostrarArreglo ()
@@ -38,7 +40,7 @@ public class Notificacionc extends AppCompatActivity {
         Log.e("OMG", "Resultado lectura: " + notificaciones.size());
         ArrayAdapter<Notificacion> adapter = new ArrayAdapter<Notificacion>(this,
                 android.R.layout.simple_list_item_1, notificaciones);
-        ListView listView = (ListView) findViewById(R.id.listaNotifi);
+        ListView listView = (ListView) findViewById(R.id.listaNotificacionesComentarios);
         listView.setAdapter(adapter);
         /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -58,7 +60,7 @@ public class Notificacionc extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(PATH_NOTIFICATION+user.getUid());
+        myRef = database.getReference("notificacionesC/"+user.getUid());
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
