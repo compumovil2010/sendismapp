@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.sendismapp.logic.Comentarioc;
+import com.example.sendismapp.logic.Notificacion;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,6 +51,9 @@ public class Comentario extends AppCompatActivity {
     ImageView aImagen;
     Button btImagen;
     String llave;
+    private String ruta;
+    private String nombreRuta;
+    private String propietario;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private StorageReference mStorageRef;
@@ -69,6 +73,9 @@ public class Comentario extends AppCompatActivity {
         btImagen = ver.findViewById(R.id.btAnadirImagen);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+        ruta = getIntent().getStringExtra("ruta");
+        nombreRuta = getIntent().getStringExtra("nombreRuta");
+        propietario = getIntent().getStringExtra("propietario");
         mStorageRef = FirebaseStorage.getInstance().getReference("comentariosRuta/");
         myRef = database.getReference("comentariosRuta/");
         /*
@@ -80,10 +87,12 @@ public class Comentario extends AppCompatActivity {
 
     public void botonComentar(View view) {
         if(cValido(comentario.getText().toString()) && mAuth.getCurrentUser() != null){
+            FirebaseUser user = mAuth.getCurrentUser();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             Comentarioc com = new Comentarioc(comentario.getText().toString(),dateFormat.format(new Date()),uriImagen,mAuth.getCurrentUser().getUid());
-            myRef = database.getReference("comentariosRuta/"+"llaveRuta");
+            myRef = database.getReference("comentariosRuta/"+ruta+"/"+user.getUid());
             myRef.setValue(com);
+            escribirNotificacion();
             Uri file = Uri.fromFile(new File(uriImagen));
             StorageReference riversRef = mStorageRef.child("llaveRuta"+"/"+myRef.push().getKey()+".jpg");
             riversRef.putFile(file)
@@ -180,5 +189,18 @@ public class Comentario extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    public void escribirNotificacion()
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        FirebaseUser user = mAuth.getCurrentUser();
+        myRef = database.getReference("notificacionesC/"+propietario+"/"+ruta+"/"+user.getUid());
+        Notificacion aux = new Notificacion();
+        aux.setUsuario(user.getUid());
+        aux.setFecha(dateFormat.format(new Date()));
+        aux.setRuta(nombreRuta);
+        myRef.setValue(aux);
+
     }
 }

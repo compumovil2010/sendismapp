@@ -35,7 +35,8 @@ public class Servicio extends IntentService {
     NotificationCompat.Builder mBuilder;
     int notificationID = 1;
     String channelID = "My channel";
-    int contador=0;
+    int contadorCali=0;
+    int contadorCom=0;
 
     public Servicio() {
         super("Servicio");
@@ -43,43 +44,79 @@ public class Servicio extends IntentService {
 
     @Override
     protected void onHandleIntent(  Intent intent) {
-        suscripcion();
+        suscripcionCalificaciones();
+        suscripcionNotificaciones();
         Log.i("TAG", "Servicio en ejecución" );
     }
 
     public IBinder onBind(Intent arg0) {
         return null;
     }
-    public void suscripcion()
+    public void suscripcionCalificaciones()
     {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        myRef = database.getReference(PATH_NOTI+user.getUid());
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        Log.i("TAG", "Servicio en ejecución"+user );
+        if (user!= null)
+        {
+            myRef = database.getReference(PATH_NOTI+user.getUid());
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (contador == 0)
-                {
-                    contador++;
+                    if (contadorCali == 0)
+                    {
+                        contadorCali++;
+                    }
+                    else
+                    {
+                        notificacion("Calificacion","Un usuario a calificado tu ruta");
+                    }
+
+
                 }
-                else
-                {
-                    notificacion();
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
                 }
+            });
+        }
 
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 
-    public void notificacion ()
+    public void suscripcionNotificaciones()
+    {
+        mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null)
+        {
+            myRef = database.getReference("notificacionesC/"+user.getUid());
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    if (contadorCom == 0)
+                    {
+                        contadorCom++;
+                    }
+                    else
+                    {
+                        notificacion("Comentario","Un usuario a comentado tu ruta");
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+    }
+
+    public void notificacion (String titulo, String texto)
     {
         NotificationManager nNotificacionManager = (NotificationManager) getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
         //mBuilder = new NotificationCompat.Builder(this,channelID);
@@ -99,20 +136,34 @@ public class Servicio extends IntentService {
         }
         mBuilder = new NotificationCompat.Builder(this,channelID);
         mBuilder.setSmallIcon(R.drawable.nn);
-        mBuilder.setContentTitle("Calificacion");
-        mBuilder.setContentText("Un usuario a calificado tu ruta ");
+        mBuilder.setContentTitle(titulo);
+        mBuilder.setContentText(texto);
         mBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         //escribirNotificacion();
 
+        if (titulo == "Calificacion")
+        {
+            Intent intent = new Intent(this, Notificaciones.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+            mBuilder.setContentIntent(pendingIntent);
+            mBuilder.setAutoCancel(true);
 
-        Intent intent = new Intent(this, Notificaciones.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-        mBuilder.setContentIntent(pendingIntent);
-        mBuilder.setAutoCancel(true);
+            nNotificacionManager.notify(notificationID,mBuilder.build());
+        }
+        else
+        {
+            Intent intent = new Intent(this, Notificacionc.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+            mBuilder.setContentIntent(pendingIntent);
+            mBuilder.setAutoCancel(true);
 
-        nNotificacionManager.notify(notificationID,mBuilder.build());
+            nNotificacionManager.notify(notificationID,mBuilder.build());
+        }
+
     }
 
 
