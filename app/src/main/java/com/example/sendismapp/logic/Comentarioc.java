@@ -1,18 +1,18 @@
 package com.example.sendismapp.logic;
 
-import java.text.SimpleDateFormat;
-
 public class Comentarioc {
     private String comentario;
     private String fecha;
     private String imagen;
     private String creador;
+    private String propietario;
 
-    public Comentarioc(String comentario, String fecha, String imagen, String creador){
+    public Comentarioc(String comentario, String fecha, String imagen, String creador, String propietario){
         this.comentario = comentario;
         this.fecha = fecha;
         this.imagen = imagen;
         this.creador = creador;
+        this.propietario = propietario;
     }
 
     public String getComentario() {
@@ -45,5 +45,13 @@ public class Comentarioc {
 
     public void setCreador(String creador) {
         this.creador = creador;
+    }
+
+    public String getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(String propietario) {
+        this.propietario = propietario;
     }
 }

@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity {
                                 updateUI(user);
                             }else {
                                 Log.i("signInUser", "signInWithEmail:failure", task.getException());
-                                Toast.makeText(Login.this, "Authentication failed.",
+                                Toast.makeText(Login.this, "Autenticación fallida",
                                         Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                             }

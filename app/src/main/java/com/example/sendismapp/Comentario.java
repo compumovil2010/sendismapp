@@ -50,7 +50,6 @@ public class Comentario extends AppCompatActivity {
     EditText comentario;
     ImageView aImagen;
     Button btImagen;
-    String llave;
     private String ruta;
     private String nombreRuta;
     private String propietario;
@@ -78,9 +77,6 @@ public class Comentario extends AppCompatActivity {
         propietario = getIntent().getStringExtra("propietario");
         mStorageRef = FirebaseStorage.getInstance().getReference("comentariosRuta/");
         myRef = database.getReference("comentariosRuta/");
-        /*
-        llave = getIntent().getStringExtra(poner nombre);
-       */
         ver.show();
     }
 
@@ -89,12 +85,12 @@ public class Comentario extends AppCompatActivity {
         if(cValido(comentario.getText().toString()) && mAuth.getCurrentUser() != null){
             FirebaseUser user = mAuth.getCurrentUser();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            Comentarioc com = new Comentarioc(comentario.getText().toString(),dateFormat.format(new Date()),uriImagen,mAuth.getCurrentUser().getUid());
+            Comentarioc com = new Comentarioc(comentario.getText().toString(),dateFormat.format(new Date()),uriImagen,mAuth.getCurrentUser().getUid(),propietario);
             myRef = database.getReference("comentariosRuta/"+ruta+"/"+user.getUid());
             myRef.setValue(com);
             escribirNotificacion();
             Uri file = Uri.fromFile(new File(uriImagen));
-            StorageReference riversRef = mStorageRef.child("llaveRuta"+"/"+myRef.push().getKey()+".jpg");
+            StorageReference riversRef = mStorageRef.child(ruta+"/"+myRef.push().getKey()+".jpg");
             riversRef.putFile(file)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -161,7 +157,7 @@ public class Comentario extends AppCompatActivity {
                         uriImagen = getRealPathFromURI(uri);
                         InputStream imageStream = getContentResolver().openInputStream(uri);
                         Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                        aImagen.setImageBitmap(Bitmap.createScaledBitmap(selectedImage,600,600,false));
+                        aImagen.setImageBitmap(Bitmap.createScaledBitmap(selectedImage,650,650,false));
                         aImagen.setVisibility(View.VISIBLE);
                         btImagen.setTextColor(Color.parseColor("black"));
                         Toast.makeText(this, "Se a cargado tu foto!", Toast.LENGTH_SHORT).show();
