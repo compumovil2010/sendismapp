@@ -58,6 +58,7 @@ public class Comentario extends AppCompatActivity {
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
     private String uriImagen = null;
+    private Comentarioc com;
     private static final int PERMISSION_STORAGE_ID = 1;
     private static final int IMAGE_PICKER_REQUEST = 2;
 
@@ -85,12 +86,12 @@ public class Comentario extends AppCompatActivity {
         if(cValido(comentario.getText().toString()) && mAuth.getCurrentUser() != null){
             FirebaseUser user = mAuth.getCurrentUser();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            Comentarioc com = new Comentarioc(comentario.getText().toString(),dateFormat.format(new Date()),uriImagen,mAuth.getCurrentUser().getUid(),propietario);
+            com = new Comentarioc(comentario.getText().toString(),dateFormat.format(new Date()),uriImagen,mAuth.getCurrentUser().getUid(),propietario,nombreRuta);
             myRef = database.getReference("comentariosRuta/"+ruta+"/"+user.getUid());
-            myRef.setValue(com);
+            //myRef.setValue(com);
             escribirNotificacion();
             Uri file = Uri.fromFile(new File(uriImagen));
-            StorageReference riversRef = mStorageRef.child(ruta+"/"+myRef.push().getKey()+".jpg");
+            StorageReference riversRef = mStorageRef.child(propietario+"/"+nombreRuta+"/"+user.getUid()+".jpg");
             riversRef.putFile(file)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -193,11 +194,11 @@ public class Comentario extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         FirebaseUser user = mAuth.getCurrentUser();
         myRef = database.getReference("notificacionesC/"+propietario+"/"+ruta+"/"+user.getUid());
-        Notificacion aux = new Notificacion();
+        /*Notificacion aux = new Notificacion();
         aux.setUsuario(user.getUid());
         aux.setFecha(dateFormat.format(new Date()));
-        aux.setRuta(nombreRuta);
-        myRef.setValue(aux);
+        aux.setRuta(nombreRuta);*/
+        myRef.setValue(com);
 
     }
 }
