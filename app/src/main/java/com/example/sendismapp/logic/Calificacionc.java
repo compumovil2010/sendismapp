@@ -1,10 +1,32 @@
 package com.example.sendismapp.logic;
 
+import androidx.annotation.NonNull;
+
 public class Calificacionc {
     private float calificacion;
     private String usuario;
     private String comentario;
     private String dificultad;
+    private String fecha;
+    private String ruta;
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
+
+
 
     public String getComentario() {
         return comentario;
@@ -47,5 +69,15 @@ public class Calificacionc {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+
+    public String toString() {
+        return "Usuario :" + usuario +"\n"+
+                "Ruta :" + ruta +"\n"+
+                "Fecha :" + fecha +"\n"+
+                "Calificacion :" + calificacion +"\n"+
+                "Dificultad :" + dificultad +"\n"+
+                "Comentario :" + comentario;
     }
 }

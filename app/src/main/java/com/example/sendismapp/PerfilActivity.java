@@ -99,7 +99,8 @@ PerfilActivity extends AppCompatActivity {
                 {
                     String nombre = dataSnapshot.child("nombre").getValue().toString();
                     editTextNombre.setText(nombre);
-                    editTextNombreUsuario.setText(nombre+"423");
+                    String nickname = dataSnapshot.child("nickname").getValue().toString();
+                    editTextNombreUsuario.setText(nickname);
                     edad = Integer.parseInt(dataSnapshot.child("edad").getValue().toString());
                     peso = Integer.parseInt(dataSnapshot.child("peso").getValue().toString());
                     altura = Integer.parseInt(dataSnapshot.child("altura").getValue().toString());
@@ -192,6 +193,7 @@ PerfilActivity extends AppCompatActivity {
                 usuarioMap.put("edad",editTextEdad.getText().toString());
                 usuarioMap.put("peso",textViewPeso.getText().toString());
                 usuarioMap.put("altura",textViewAltura.getText().toString());
+                usuarioMap.put("nickname",editTextNombreUsuario.getText().toString());
                 myRef.child(user.getUid()).updateChildren(usuarioMap);
 
                 finish();
