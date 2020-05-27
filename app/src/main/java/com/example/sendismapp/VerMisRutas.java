@@ -39,7 +39,7 @@ public class VerMisRutas extends AppCompatActivity {
 
     private List<Ruta> rutasGlobales = new ArrayList<Ruta>();
     private boolean archivoDisponible = false;
-    static final String nombreArchivo = "rutas.json";
+    static final String nombreArchivo = "rutas2.json";
     private ArrayAdapter adaptador;
     /*Manejo de Firebase*/
     private final static String PATH_ROUTES = "rutas/";
@@ -68,7 +68,7 @@ public class VerMisRutas extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this,"No se han creado rutas de forma local", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,"No se han creado rutas de forma local", Toast.LENGTH_LONG).show();
         }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

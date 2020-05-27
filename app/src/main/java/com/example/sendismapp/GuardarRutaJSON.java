@@ -24,7 +24,7 @@ public class GuardarRutaJSON extends AppCompatActivity {
     private EditText edtDuaracion;
     private EditText edtCalificacion;
     private Button btnConfirmar;
-    static final String nombreArchivo = "rutas.json";
+    static final String nombreArchivo = "rutas2.json";
     private JSONArray rutas = new JSONArray();
 
     @Override
