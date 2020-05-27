@@ -7,15 +7,30 @@
     tools:context=".verComentarios">
 
     <TextView
+        android:id="@+id/textView1234423434232"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comentario"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/blanco"
+        android:background="@color/colorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Imagen"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColor="@color/emptyStar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1234423434232" />
 
     <ImageView
         android:id="@+id/imageComentario"
@@ -31,9 +46,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Comentario"
+        android:text="Texto"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textColor="@color/emptyStar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +57,8 @@
 
     <TextView
         android:id="@+id/textComentario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="24dp"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

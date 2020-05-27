@@ -34,7 +34,6 @@ public class GuardarRutaJSON extends AppCompatActivity {
         setContentView(R.layout.pop_up_guardar_ruta);
 
         /*Inflar GUI*/
-        edtCalificacion = findViewById(R.id.edtCalificacion);
         edtDuaracion = findViewById(R.id.edtDuracion);
         edtNombre = findViewById(R.id.edtNombre);
         btnConfirmar = findViewById(R.id.btnAceptarNombreMapa);
@@ -43,19 +42,17 @@ public class GuardarRutaJSON extends AppCompatActivity {
     public void grabarNuevaRuta(View v) {
         String nombre = edtNombre.getText().toString();
         String duracion = edtDuaracion.getText().toString();
-        int calificacion = Integer.parseInt(edtCalificacion.getText().toString());
 
         Ruta nuevaRuta = new Ruta();
-        nuevaRuta.setCalificacion(calificacion);
+        nuevaRuta.setCalificacion(5);
         nuevaRuta.setNombre(nombre);
         nuevaRuta.setDuracion(duracion);
 
         rutas.put(nuevaRuta.toJSON());
         Writer output = null;
         try {
-            //File file = new File(this.getFilesDir().getAbsolutePath(), nombreArchivo);
+            File file = new File(this.getFilesDir().getAbsolutePath(), nombreArchivo);
             //File file = new File(this.getCacheDir(), nombreArchivo);
-            File file = new File("/data/com.example.sendismapp/datos/", nombreArchivo);
             if(!file.exists()) {
                 file.mkdir();
             }
@@ -66,7 +63,6 @@ public class GuardarRutaJSON extends AppCompatActivity {
             /*WARNING*/
 
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
         Intent intent = new Intent(GuardarRutaJSON.this,MenuPrincipal.class);
         startActivity(intent);

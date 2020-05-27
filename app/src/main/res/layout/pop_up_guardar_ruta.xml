@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
-    android:layout_height="250dp"
+    android:layout_height="200dp"
     android:orientation="vertical"
     android:background="@color/colorSecondary"
     android:layout_gravity="center"
@@ -25,15 +25,6 @@
         android:gravity="center"
         android:inputType="textPersonName"
         android:hint="@string/duracionRuta" />
-
-    <EditText
-        android:id="@+id/edtCalificacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:hint="@string/calificacionRuta" />
 
     <Button
         android:id="@+id/btnAceptarNombreMapa"

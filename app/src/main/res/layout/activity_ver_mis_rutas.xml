@@ -12,7 +12,7 @@
         android:layout_height="40dp"
         android:background="@color/colorSecondary"
         android:gravity="center"
-        android:text="Mis Rutas"
+        android:text="Rutas de la comunidad"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
