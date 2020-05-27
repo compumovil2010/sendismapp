@@ -10,7 +10,7 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
+        android:layout_height="600dp"
         tools:context=".PreVisualizarRuta"
         tools:ignore="MissingConstraints"
         tools:layout="@layout/contenedor_mapa_crear_ruta"/>

@@ -257,8 +257,6 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-        Toast.makeText(this,"Id: " + user.getUid(),Toast.LENGTH_LONG).show();
-        edtBuscarDireccion.setText(user.getUid());
 
         if(rutaActual == null)
         {

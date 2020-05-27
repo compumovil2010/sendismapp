@@ -44,20 +44,12 @@ public class MenuPrincipal extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("users/");
-        botonBuscarRuta = findViewById(R.id.buttonBuscarRuta);
         botonVerMisRutas = findViewById(R.id.buttonVerRutas);
         botonCrearRutas = findViewById(R.id.buttonCrearRuta);
         botonHistorialRutas = findViewById(R.id.buttonHistorial);
         botonVerPerfil = findViewById(R.id.buttonPerfil);
         botonVerNotificaciones = findViewById(R.id.buttonNotificacion);
         botonEditarRuta = findViewById(R.id.buttonEditarRuta);
-        botonBuscarRuta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuPrincipal.this,BuscarRutas.class);
-                startActivity(intent);
-            }
-        });
         botonVerMisRutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

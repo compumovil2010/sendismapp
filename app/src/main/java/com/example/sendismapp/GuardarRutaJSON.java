@@ -54,7 +54,11 @@ public class GuardarRutaJSON extends AppCompatActivity {
         Writer output = null;
         try {
             //File file = new File(this.getFilesDir().getAbsolutePath(), nombreArchivo);
-            File file = new File(this.getCacheDir(), nombreArchivo);
+            //File file = new File(this.getCacheDir(), nombreArchivo);
+            File file = new File("/data/com.example.sendismapp/datos/", nombreArchivo);
+            if(!file.exists()) {
+                file.mkdir();
+            }
             Log.e("ARCHIVO", "Ubicacion de archivo :" + file);
             output = new BufferedWriter(new FileWriter(file));
             output.write(rutas.toString());

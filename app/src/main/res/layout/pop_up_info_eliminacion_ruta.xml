@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Si estas seguro de tu decisión dale al botón"
+        android:text="Si estás seguro de tu decisión, dale al botón"
         android:textColor="@color/blanco"
         android:textSize="20sp"/>
 
@@ -48,5 +48,5 @@
         android:layout_height="wrap_content"
         android:onClick="eliminarParaSiempre"
         android:layout_marginTop="40dp"
-        android:text="@string/historial_de_rutas" />
+        android:text="CONFIRMAR ELIMINACIÓN" />
 </LinearLayout>

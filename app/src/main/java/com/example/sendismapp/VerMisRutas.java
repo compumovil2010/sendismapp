@@ -165,20 +165,26 @@ public class VerMisRutas extends AppCompatActivity {
                         //Manejo de Listas de coordenadas
                         List<Object> puntosInutiles = (List<Object>) mapRutas.get("puntosRuta");
                         assert puntosInutiles != null;
-                        for(Object obj : puntosInutiles)
+                        if(puntosInutiles != null)
                         {
-                            Map<String, Object> mapAux = (Map<String, Object>) obj;
-                            LatLng latLng = new LatLng((double) mapAux.get("latitude"), (double) mapAux.get("longitude"));
-                            puntosRuta.add(latLng);
+                            for(Object obj : puntosInutiles)
+                            {
+                                Map<String, Object> mapAux = (Map<String, Object>) obj;
+                                LatLng latLng = new LatLng((double) mapAux.get("latitude"), (double) mapAux.get("longitude"));
+                                puntosRuta.add(latLng);
+                            }
                         }
                         List<Object> marcadoresInutiles = (List<Object>) mapRutas.get("puntosDeInteres");
                         assert marcadoresInutiles != null;
-                        for(Object obj2 : marcadoresInutiles)
+                        if(marcadoresInutiles != null)
                         {
-                            Map<String, Object> mapAux = (Map<String, Object>) obj2;
-                            String icono = (String) mapAux.get("icono");
-                            PuntoDeInteres puntoNuevo = new PuntoDeInteres((double) mapAux.get("latitud"), (double) mapAux.get("longitud"),icono);
-                            puntosDeInteres.add(puntoNuevo);
+                            for(Object obj2 : marcadoresInutiles)
+                            {
+                                Map<String, Object> mapAux = (Map<String, Object>) obj2;
+                                String icono = (String) mapAux.get("icono");
+                                PuntoDeInteres puntoNuevo = new PuntoDeInteres((double) mapAux.get("latitud"), (double) mapAux.get("longitud"),icono);
+                                puntosDeInteres.add(puntoNuevo);
+                            }
                         }
                         Ruta rutaLeida = new Ruta(nombre, llavePropietario, llaveRutaActual, distancia, dificultad, duracion, calificacion, puntosRuta, puntosDeInteres);
                         rutasActuales.add(rutaLeida);

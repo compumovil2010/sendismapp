@@ -43,20 +43,21 @@
         android:id="@+id/buttonCalificar"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="Calificar"
+        android:layout_marginStart="15dp"
         android:background="@color/colorSecondary"
+        android:text="Calificar"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonComentar"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollNotificaciones"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/scrollNotificaciones" />
 
     <Button
         android:id="@+id/buttonComentar"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="15dp"
         android:background="@color/colorSecondary"
         android:text="Comentar"
         android:textSize="15sp"

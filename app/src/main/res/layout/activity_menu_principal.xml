@@ -12,20 +12,7 @@
 
     </include>
 
-    <Button
-        android:id="@+id/buttonBuscarRuta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@color/colorSecondary"
-        android:textColor="@color/blanco"
-        android:text="Buscar Ruta"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
 
     <Button
         android:id="@+id/buttonVerRutas"
@@ -34,12 +21,12 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
-        android:text="Ver Mis Rutas"
+        android:text="Ver Rutas De la Comunidad"
         android:background="@color/colorSecondary"
         android:textColor="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonBuscarRuta" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <Button
         android:id="@+id/buttonCrearRuta"
