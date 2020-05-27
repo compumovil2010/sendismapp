@@ -6,5 +6,9 @@
         android:id="@+id/itemCerrarSesion"
         android:title="@string/menuCerrarSesion">
     </item>
+    <item
+        android:id="@+id/itemBorrarUsuario"
+        android:title="@string/menuBorrarUsuario">
+    </item>
 
 </menu>

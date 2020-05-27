@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +15,11 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.sendismapp.logic.Notificacion;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MenuPrincipal extends AppCompatActivity {
 
@@ -25,6 +31,8 @@ public class MenuPrincipal extends AppCompatActivity {
     private Button botonVerNotificaciones;
     private Button botonEditarRuta;
     private FirebaseAuth mAuth;
+    private DatabaseReference myRef;
+    private FirebaseDatabase database;
     private Toolbar toolbar;
     private FirebaseUser currentUser;
 
@@ -34,6 +42,8 @@ public class MenuPrincipal extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
         toolbar = findViewById(R.id.toolbar);
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("users/");
         botonBuscarRuta = findViewById(R.id.buttonBuscarRuta);
         botonVerMisRutas = findViewById(R.id.buttonVerRutas);
         botonCrearRutas = findViewById(R.id.buttonCrearRuta);
@@ -93,7 +103,6 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });;
 
-
     }
     @Override
     public void onResume() {
@@ -132,6 +141,13 @@ public class MenuPrincipal extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
+                    }else if(item.getItemId() == R.id.itemBorrarUsuario){
+                        currentUser.delete();
+                        Intent intent = new Intent(MenuPrincipal.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        eUsuario();
+                        return true;
                     }
                     return false;
                 }
@@ -143,4 +159,27 @@ public class MenuPrincipal extends AppCompatActivity {
         Intent intent = new Intent(MenuPrincipal.this, Notificacionc.class);
         startActivity(intent);
     }
+
+    public void eUsuario(){
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot single : dataSnapshot.getChildren()){
+                    if(single.getKey().equals(currentUser.getUid())){
+                        myRef.child(single.getKey()).setValue(null);
+                    }
+
+                }
+                Toast.makeText(MenuPrincipal.this, "Se borró este usuario",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(MenuPrincipal.this, "No se pudo borrar este usuario",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }

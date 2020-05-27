@@ -41,6 +41,7 @@
         <activity
             android:name=".EdicionFinalRuta"
             android:label="@string/title_activity_edicion_final_ruta"></activity>
+        <activity android:name=".verComentarios"></activity>
         <activity android:name=".Notificacionc" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

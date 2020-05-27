@@ -125,5 +125,6 @@
     <string name="edtNickName">Nickname</string>
     <string name="historial_de_rutas">Historial de Rutas</string>
     <string name="title_activity_edicion_final_ruta">Map</string>
+    <string name="menuBorrarUsuario">Eliminar usuario</string>
 
 </resources>

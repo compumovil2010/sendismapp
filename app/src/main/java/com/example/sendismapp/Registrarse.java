@@ -317,7 +317,7 @@ public class Registrarse extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("TAG", "Error handling rest invocation"+error.getCause());
+                        Log.i("TAG", "Error en uso de rest"+error.getCause());
                     }
                 }
         );

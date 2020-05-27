@@ -48,6 +48,7 @@ public class Calificacion extends AppCompatActivity {
     NotificationCompat.Builder mBuilder;
     int notificationID = 1;
     String channelID = "My channel";
+    Calificacionc cal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,13 +85,13 @@ public class Calificacion extends AppCompatActivity {
         seleccion = ver.findViewById(radioId);
         FirebaseUser user = mAuth.getCurrentUser();
         myRef = database.getReference(PATH_CALI+ruta+"/"+user.getUid());
-        Calificacionc aux = new Calificacionc();
-        aux.setUsuario(user.getUid());
-        aux.setCalificacion(califica.getRating());
-        aux.setComentario(cometario.getText().toString());
-        aux.setDificultad(seleccion.getText().toString());
+         cal = new Calificacionc();
+        cal.setUsuario(user.getUid());
+        cal.setCalificacion(califica.getRating());
+        cal.setComentario(cometario.getText().toString());
+        cal.setDificultad(seleccion.getText().toString());
 
-        myRef.setValue(aux);
+        //myRef.setValue(aux);
 
 
 
@@ -140,11 +141,10 @@ public class Calificacion extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         FirebaseUser user = mAuth.getCurrentUser();
         myRef = database.getReference(PATH_NOTI+propietario+"/"+ruta+"/"+user.getUid());
-        Notificacion aux = new Notificacion();
-        aux.setUsuario(user.getUid());
-        aux.setFecha(dateFormat.format(new Date()));
-        aux.setRuta(nombreRuta);
-        myRef.setValue(aux);
+
+        cal.setFecha(dateFormat.format(new Date()));
+        cal.setRuta(nombreRuta);
+        myRef.setValue(cal);
 
     }
 }

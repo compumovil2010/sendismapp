@@ -3,11 +3,15 @@ package com.example.sendismapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.sendismapp.logic.Comentarioc;
 import com.example.sendismapp.logic.Notificacion;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,31 +29,35 @@ public class Notificacionc extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     public static final String PATH_NOTIFICATION="notificaciones/";
-    private ArrayList<Notificacion> notificaciones;
+    private ArrayList<Comentarioc> notificaciones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificacionc);
+        notificaciones = new ArrayList<Comentarioc>();
+        leerFB();
     }
 
     public void mostrarArreglo ()
     {
         Log.e("OMG", "Resultado lectura: " + notificaciones.size());
-        ArrayAdapter<Notificacion> adapter = new ArrayAdapter<Notificacion>(this,
+        ArrayAdapter<Comentarioc> adapter = new ArrayAdapter<Comentarioc>(this,
                 android.R.layout.simple_list_item_1, notificaciones);
-        ListView listView = (ListView) findViewById(R.id.listaNotifi);
+        ListView listView = (ListView) findViewById(R.id.listaNotificacionesComentarios);
         listView.setAdapter(adapter);
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(), Calificacion.class);
-                //intent.putExtra("ruta",rutas.get(position).getLlaveRutaActual());
-                //intent.putExtra("nombreRuta",rutas.get(position).getNombre());
+                Intent intent = new Intent(getBaseContext(), verComentarios.class);
+                intent.putExtra("comentario",notificaciones.get(position).getComentario());
+                intent.putExtra("nombreRuta",notificaciones.get(position).getRuta());
+                intent.putExtra("creador",notificaciones.get(position).getCreador());
+
                 //intent.putExtra("propietario",rutas.get(position).getLlavePropietario());
                 startActivity(intent);
             }
-        });*/
+        });
     }
 
     private void leerFB()
@@ -58,7 +66,7 @@ public class Notificacionc extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(PATH_NOTIFICATION+user.getUid());
+        myRef = database.getReference("notificacionesC/"+user.getUid());
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -66,10 +74,11 @@ public class Notificacionc extends AppCompatActivity {
                 for (DataSnapshot single : dataSnapshot.getChildren())
                 {
                     for (DataSnapshot single2 : single.getChildren()) {
-                        Notificacion aux= new Notificacion();
+                        Comentarioc aux= new Comentarioc();
                         aux.setRuta(single2.child("ruta").getValue().toString());
                         aux.setFecha(single2.child("fecha").getValue().toString());
-                        aux.setUsuario(single2.child("usuario").getValue().toString());
+                        aux.setCreador(single2.child("creador").getValue().toString());
+                        aux.setComentario(single2.child("comentario").getValue().toString());
                         notificaciones.add(aux);
 
                         single.getKey();

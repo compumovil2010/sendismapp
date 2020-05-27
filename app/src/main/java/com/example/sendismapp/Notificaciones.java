@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.sendismapp.logic.Calificacionc;
 import com.example.sendismapp.logic.Notificacion;
 import com.example.sendismapp.logic.Ruta;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,21 +32,22 @@ public class Notificaciones extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     public static final String PATH_NOTIFICATION="notificaciones/";
-    private ArrayList<Notificacion> notificaciones;
+    private ArrayList<Calificacionc> notificaciones;
+    private  String nickname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificaciones);
 
-        notificaciones = new ArrayList<Notificacion>();
+        notificaciones = new ArrayList<Calificacionc>();
         leerFB();
     }
 
     public void mostrarArreglo ()
     {
         Log.e("OMG", "Resultado  lectura: " + notificaciones.size());
-        ArrayAdapter<Notificacion> adapter = new ArrayAdapter<Notificacion>(this,
+        ArrayAdapter<Calificacionc> adapter = new ArrayAdapter<Calificacionc>(this,
                 android.R.layout.simple_list_item_1, notificaciones);
         ListView listView = (ListView) findViewById(R.id.listaNotifi);
         listView.setAdapter(adapter);
@@ -65,36 +67,40 @@ public class Notificaciones extends AppCompatActivity {
     {
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(PATH_NOTIFICATION+user.getUid());
+    FirebaseUser user = mAuth.getCurrentUser();
+    database = FirebaseDatabase.getInstance();
+    myRef = database.getReference(PATH_NOTIFICATION+user.getUid());
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot single : dataSnapshot.getChildren())
-                {
-                    for (DataSnapshot single2 : single.getChildren()) {
-                        Notificacion aux= new Notificacion();
-                        aux.setRuta(single2.child("ruta").getValue().toString());
-                        aux.setFecha(single2.child("fecha").getValue().toString());
-                        aux.setUsuario(single2.child("usuario").getValue().toString());
-                        notificaciones.add(aux);
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            for (DataSnapshot single : dataSnapshot.getChildren())
+            {
+                for (DataSnapshot single2 : single.getChildren()) {
+                    Calificacionc aux= new Calificacionc();
+                    aux.setDificultad(single2.child("dificultad").getValue().toString());
+                    aux.setComentario(single2.child("comentario").getValue().toString());
+                    aux.setCalificacion(Float.valueOf(single2.child("calificacion").getValue().toString()));
+                    aux.setRuta(single2.child("ruta").getValue().toString());
+                    aux.setFecha(single2.child("fecha").getValue().toString());
+                    aux.setUsuario(single2.child("usuario").getValue().toString());
 
-                        single.getKey();
-                        //Log.e("OMG", "Resultado lectura: " + aux.getFecha().toString());
-                        //Log.e("OMG", "Resultado lectura: " + rutas.size());
-                    }
+                    notificaciones.add(aux);
+
+                    single.getKey();
+                    //Log.e("OMG", "Resultado lectura: " + aux.getFecha().toString());
+                    //Log.e("OMG", "Resultado lectura: " + rutas.size());
                 }
-                mostrarArreglo();
             }
+            mostrarArreglo();
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+        }
+    });
+}
 
 
-    }
 }

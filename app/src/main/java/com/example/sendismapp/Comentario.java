@@ -50,7 +50,6 @@ public class Comentario extends AppCompatActivity {
     EditText comentario;
     ImageView aImagen;
     Button btImagen;
-    String llave;
     private String ruta;
     private String nombreRuta;
     private String propietario;
@@ -59,6 +58,7 @@ public class Comentario extends AppCompatActivity {
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
     private String uriImagen = null;
+    private Comentarioc com;
     private static final int PERMISSION_STORAGE_ID = 1;
     private static final int IMAGE_PICKER_REQUEST = 2;
 
@@ -78,9 +78,6 @@ public class Comentario extends AppCompatActivity {
         propietario = getIntent().getStringExtra("propietario");
         mStorageRef = FirebaseStorage.getInstance().getReference("comentariosRuta/");
         myRef = database.getReference("comentariosRuta/");
-        /*
-        llave = getIntent().getStringExtra(poner nombre);
-       */
         ver.show();
     }
 
@@ -89,12 +86,12 @@ public class Comentario extends AppCompatActivity {
         if(cValido(comentario.getText().toString()) && mAuth.getCurrentUser() != null){
             FirebaseUser user = mAuth.getCurrentUser();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            Comentarioc com = new Comentarioc(comentario.getText().toString(),dateFormat.format(new Date()),uriImagen,mAuth.getCurrentUser().getUid());
+            com = new Comentarioc(comentario.getText().toString(),dateFormat.format(new Date()),uriImagen,mAuth.getCurrentUser().getUid(),propietario,nombreRuta);
             myRef = database.getReference("comentariosRuta/"+ruta+"/"+user.getUid());
-            myRef.setValue(com);
+            //myRef.setValue(com);
             escribirNotificacion();
             Uri file = Uri.fromFile(new File(uriImagen));
-            StorageReference riversRef = mStorageRef.child("llaveRuta"+"/"+myRef.push().getKey()+".jpg");
+            StorageReference riversRef = mStorageRef.child(propietario+"/"+nombreRuta+"/"+user.getUid()+".jpg");
             riversRef.putFile(file)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -161,7 +158,7 @@ public class Comentario extends AppCompatActivity {
                         uriImagen = getRealPathFromURI(uri);
                         InputStream imageStream = getContentResolver().openInputStream(uri);
                         Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                        aImagen.setImageBitmap(Bitmap.createScaledBitmap(selectedImage,600,600,false));
+                        aImagen.setImageBitmap(Bitmap.createScaledBitmap(selectedImage,650,650,false));
                         aImagen.setVisibility(View.VISIBLE);
                         btImagen.setTextColor(Color.parseColor("black"));
                         Toast.makeText(this, "Se a cargado tu foto!", Toast.LENGTH_SHORT).show();
@@ -197,11 +194,11 @@ public class Comentario extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         FirebaseUser user = mAuth.getCurrentUser();
         myRef = database.getReference("notificacionesC/"+propietario+"/"+ruta+"/"+user.getUid());
-        Notificacion aux = new Notificacion();
+        /*Notificacion aux = new Notificacion();
         aux.setUsuario(user.getUid());
         aux.setFecha(dateFormat.format(new Date()));
-        aux.setRuta(nombreRuta);
-        myRef.setValue(aux);
+        aux.setRuta(nombreRuta);*/
+        myRef.setValue(com);
 
     }
 }
