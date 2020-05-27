@@ -39,7 +39,7 @@ public class VerMisRutas extends AppCompatActivity {
 
     private List<Ruta> rutasGlobales = new ArrayList<Ruta>();
     private boolean archivoDisponible = false;
-    static final String nombreArchivo = "rutas2.json";
+    static final String nombreArchivo = "rutas.json";
     private ArrayAdapter adaptador;
     /*Manejo de Firebase*/
     private final static String PATH_ROUTES = "rutas/";
