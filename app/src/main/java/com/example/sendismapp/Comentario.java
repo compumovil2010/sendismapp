@@ -158,7 +158,7 @@ public class Comentario extends AppCompatActivity {
                         uriImagen = getRealPathFromURI(uri);
                         InputStream imageStream = getContentResolver().openInputStream(uri);
                         Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                        aImagen.setImageBitmap(Bitmap.createScaledBitmap(selectedImage,650,650,false));
+                        aImagen.setImageBitmap(Bitmap.createScaledBitmap(selectedImage,600,600,false));
                         aImagen.setVisibility(View.VISIBLE);
                         btImagen.setTextColor(Color.parseColor("black"));
                         Toast.makeText(this, "Se a cargado tu foto!", Toast.LENGTH_SHORT).show();

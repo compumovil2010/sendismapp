@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.sendismapp.logic.Calificacionc;
+import com.example.sendismapp.logic.Comentarioc;
 import com.example.sendismapp.logic.Notificacion;
 import com.example.sendismapp.logic.Ruta;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +35,8 @@ public class Notificaciones extends AppCompatActivity {
     public static final String PATH_NOTIFICATION="notificaciones/";
     private ArrayList<Calificacionc> notificaciones;
     private  String nickname;
+    private DatabaseReference myRef2;
+    private int nick=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +49,17 @@ public class Notificaciones extends AppCompatActivity {
 
     public void mostrarArreglo ()
     {
-        Log.e("OMG", "Resultado  lectura: " + notificaciones.size());
-        ArrayAdapter<Calificacionc> adapter = new ArrayAdapter<Calificacionc>(this,
-                android.R.layout.simple_list_item_1, notificaciones);
-        ListView listView = (ListView) findViewById(R.id.listaNotifi);
-        listView.setAdapter(adapter);
+        if(nick==0)
+        {
+            nick=1;
+            buscarnick();
+        }
+        else {
+            Log.e("OMG", "Resultado  lectura: " + notificaciones.size());
+            ArrayAdapter<Calificacionc> adapter = new ArrayAdapter<Calificacionc>(this,
+                    android.R.layout.simple_list_item_1, notificaciones);
+            ListView listView = (ListView) findViewById(R.id.listaNotifi);
+            listView.setAdapter(adapter);
         /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -61,6 +70,7 @@ public class Notificaciones extends AppCompatActivity {
                 startActivity(intent);
             }
         });*/
+        }
     }
 
     private void leerFB()
@@ -101,6 +111,44 @@ public class Notificaciones extends AppCompatActivity {
         }
     });
 }
+
+    public void buscarnick()
+    {
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+
+        myRef2 = database.getReference("users/");
+
+        myRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot single : dataSnapshot.getChildren()) {
+                    String codigo = single.getKey();
+                    nickname=single.child("nickname").getValue().toString();
+
+                    for (int i =0; i<notificaciones.size();i++)
+                    {
+                        Calificacionc aux = notificaciones.get(i);
+
+                        String creador = aux.getUsuario();
+                        if (codigo.equals(creador)  )
+                        {
+                            aux.setUsuario(nickname);
+                            notificaciones.set(i,aux);
+                        }
+                    }
+
+                }
+                mostrarArreglo();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
 
 }
