@@ -28,8 +28,11 @@ public class Notificacionc extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+    private DatabaseReference myRef2;
     public static final String PATH_NOTIFICATION="notificaciones/";
     private ArrayList<Comentarioc> notificaciones;
+    private String nickname;
+    private int nick=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +44,31 @@ public class Notificacionc extends AppCompatActivity {
 
     public void mostrarArreglo ()
     {
-        Log.e("OMG", "Resultado lectura: " + notificaciones.size());
-        ArrayAdapter<Comentarioc> adapter = new ArrayAdapter<Comentarioc>(this,
-                android.R.layout.simple_list_item_1, notificaciones);
-        ListView listView = (ListView) findViewById(R.id.listaNotificacionesComentarios);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(), verComentarios.class);
-                intent.putExtra("comentario",notificaciones.get(position).getComentario());
-                intent.putExtra("nombreRuta",notificaciones.get(position).getRuta());
-                intent.putExtra("creador",notificaciones.get(position).getCreador());
+        if(nick==0)
+        {
+            nick=1;
+            buscarnick();
+        }
+        else {
 
-                //intent.putExtra("propietario",rutas.get(position).getLlavePropietario());
-                startActivity(intent);
-            }
-        });
+            Log.e("OMG", "Resultado lectura: " + notificaciones.size());
+            ArrayAdapter<Comentarioc> adapter = new ArrayAdapter<Comentarioc>(this,
+                    android.R.layout.simple_list_item_1, notificaciones);
+            ListView listView = (ListView) findViewById(R.id.listaNotificacionesComentarios);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getBaseContext(), verComentarios.class);
+                    intent.putExtra("comentario", notificaciones.get(position).getComentario());
+                    intent.putExtra("nombreRuta", notificaciones.get(position).getRuta());
+                    intent.putExtra("creador", notificaciones.get(position).getCreador());
+
+                    //intent.putExtra("propietario",rutas.get(position).getLlavePropietario());
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void leerFB()
@@ -95,6 +106,44 @@ public class Notificacionc extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void buscarnick ()
+    {
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+
+            myRef2 = database.getReference("users/");
+
+            myRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot single : dataSnapshot.getChildren()) {
+                        String codigo = single.getKey();
+                        nickname=single.child("nickname").getValue().toString();
+
+                        for (int i =0; i<notificaciones.size();i++)
+                        {
+                            Comentarioc aux = notificaciones.get(i);
+
+                            String creador = aux.getCreador();
+                            if (codigo.equals(creador)  )
+                            {
+                                aux.setCreador(nickname);
+                                notificaciones.set(i,aux);
+                            }
+                        }
+
+                    }
+                    mostrarArreglo();
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
 
     }
 
