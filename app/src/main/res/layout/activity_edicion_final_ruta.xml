@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/mapa_editar"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        tools:context=".EdicionFinalRuta"
+        tools:ignore="MissingConstraints"
+        tools:layout="@layout/contenedor_mapa_crear_ruta" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/mapa_editar">
+
+        <TextView
+            android:id="@+id/txtVMarcadores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:text="@string/txtMarcadores"
+            android:textColor="@color/texts"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/marcadorDificil"
+                    android:layout_width="59dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="@string/Img"
+                    android:onClick="clickMDificil"
+                    android:src="@drawable/m_dificultad"
+                    android:tag="m_dificultad"
+                    app:layout_constraintStart_toEndOf="@+id/txtVMarcadores"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres" />
+
+                <ImageView
+                    android:id="@+id/selecDificil"
+                    android:layout_width="81dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/seleccionado2"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/btnFoto"
+                    app:layout_constraintHorizontal_bias="0.361"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="467dp"
+                    tools:visibility="visible" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/marcardorEnergia"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/Img"
+                    android:onClick="clickMEnergia"
+                    android:src="@drawable/m_energia"
+                    android:tag="m_energia"
+                    app:layout_constraintStart_toEndOf="@+id/marcadorDificil"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres" />
+
+                <ImageView
+                    android:id="@+id/selecEnergia"
+                    android:layout_width="81dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/seleccionado2"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/btnFoto"
+                    app:layout_constraintHorizontal_bias="0.535"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="467dp"
+                    tools:visibility="visible" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/marcadorAguar"
+                    android:layout_width="55sp"
+                    android:layout_height="55sp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:contentDescription="@string/Img"
+                    android:onClick="clickMAgua"
+                    android:src="@drawable/water"
+                    android:tag="water"
+                    app:layout_constraintStart_toEndOf="@+id/marcardorEnergia"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres" />
+
+                <ImageView
+                    android:id="@+id/selecAgua"
+                    android:layout_width="81dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/seleccionado2"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/btnFoto"
+                    app:layout_constraintHorizontal_bias="0.704"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="467dp"
+                    tools:visibility="visible" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/marcadorPaisaje"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="5dp"
+                    android:contentDescription="@string/Img"
+                    android:onClick="clickMPaisaje"
+                    android:src="@drawable/m_paisaje"
+                    android:tag="m_paisaje"
+                    app:layout_constraintStart_toEndOf="@+id/marcadorAguar"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres"
+                    tools:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/selecPaisaje"
+                    android:layout_width="81dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="@string/Img"
+                    android:src="@drawable/seleccionado2"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/btnFoto"
+                    app:layout_constraintHorizontal_bias="0.878"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="467dp"
+                    tools:visibility="visible" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/imgBasura"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/Img"
+                android:onClick="eliminarMarcador"
+                android:src="@drawable/basura"
+                android:tag="basura"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnFoto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgBInfoMarcadores"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0.1"
+                android:background="@color/colorSecondary"
+                android:contentDescription="@string/Img"
+                android:onClick="popUpInfoMarcadores"
+                android:src="@android:drawable/ic_menu_info_details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtVMarcadores" />
+
+            <ImageButton
+                android:id="@+id/btnFoto"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0.1"
+                android:background="@color/colorSecondary"
+                android:contentDescription="@string/Img"
+                android:onClick="desplegarCamara"
+                android:src="@android:drawable/ic_menu_camera"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/marcadorPaisaje"
+                app:layout_constraintTop_toBottomOf="@+id/txtVEdicionPuntosInteres" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/bandera"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/Img"
+        android:onClick="eliminarRuta"
+        android:src="@drawable/big_trash"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/agregarMarcador" />
+
+    <ImageView
+        android:id="@+id/agregarMarcador"
+        android:layout_width="55sp"
+        android:layout_height="55sp"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/Img"
+        android:onClick="agregarMarcadorRuta"
+        android:src="@drawable/m_pin_azul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="189dp"
+        android:layout_height="45sp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorSecondary"
+        android:onClick="guardarRuta"
+        android:text="@string/btnGuardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

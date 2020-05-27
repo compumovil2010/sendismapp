@@ -195,26 +195,4 @@ public class VerMisRutas extends AppCompatActivity {
             }
         });
     }
-
-    /*public void iniciarArreglo()
-    {
-        misRutas = new MiRuta[15];
-        String[] nombre = {
-                "Monserrate", "Guadalupe", "Chia", "Cajica", "Mosquera"
-        };
-        Double calificacion;
-        int hora;
-        int minutos;
-        int segundos;
-
-        MiRuta aux;
-        for (int i = 0; i < misRutas.length; i++) {
-            calificacion = Double.valueOf((i + 3) % 2);
-            hora = (i + 1) % 2;
-            minutos = (i * 10) % 60;
-            segundos = (i * 100) % 60;
-            misRutas[i] = new MiRuta(nombre[i % 5], calificacion, hora, minutos, segundos);
-
-        }
-    }*/
 }

@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sendismapp.VerMisRutas">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewTTTTT"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/colorSecondary"
         android:gravity="center"
-        android:text="Mis Rutas"
+        android:text="Mis Rutas Creadas"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,12 +19,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/scrollNotificaciones"
+        android:id="@+id/scrollEdicionRutas"
         android:layout_width="385dp"
         android:layout_height="683dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/textViewTTTTT">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,12 +31,11 @@
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/listaMisRutas"
+                android:id="@+id/listaMisRutas2"
                 android:layout_width="match_parent"
                 android:layout_height="680dp"
                 tools:ignore="NestedScrolling" />
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

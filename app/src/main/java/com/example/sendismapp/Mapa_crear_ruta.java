@@ -595,7 +595,6 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
         }
         Writer output = null;
         try {
-            //File file = new File(getBaseContext().getExternalFilesDir(null), filename);
             if(nombreArchivo != null && nombreArchivo != "")
             {
                 File file = new File(this.getFilesDir().getAbsolutePath(), nombreArchivo);

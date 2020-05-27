@@ -182,7 +182,6 @@ public class HistorialRutas extends AppCompatActivity {
     }
     private void leerFB()
     {
-
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference(PATH_ROUTES);
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {

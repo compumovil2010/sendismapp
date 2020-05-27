@@ -23,6 +23,7 @@ public class MenuPrincipal extends AppCompatActivity {
     private Button botonHistorialRutas;
     private Button botonVerPerfil;
     private Button botonVerNotificaciones;
+    private Button botonEditarRuta;
     private FirebaseAuth mAuth;
     private Toolbar toolbar;
     private FirebaseUser currentUser;
@@ -39,7 +40,7 @@ public class MenuPrincipal extends AppCompatActivity {
         botonHistorialRutas = findViewById(R.id.buttonHistorial);
         botonVerPerfil = findViewById(R.id.buttonPerfil);
         botonVerNotificaciones = findViewById(R.id.buttonNotificacion);
-
+        botonEditarRuta = findViewById(R.id.buttonEditarRuta);
         botonBuscarRuta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +85,13 @@ public class MenuPrincipal extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        botonEditarRuta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuPrincipal.this, EditarRuta.class);
+                startActivity(intent);
+            }
+        });;
 
 
     }
