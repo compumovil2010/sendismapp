@@ -7,6 +7,7 @@ public class Comentarioc {
     private String creador;
     private String propietario;
     private String ruta;
+    private String nickname;
 
     public Comentarioc(String comentario, String fecha, String imagen, String creador, String propietario, String ruta){
         this.comentario = comentario;
@@ -69,9 +70,17 @@ public class Comentarioc {
         this.ruta = ruta;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public String toString()
     {
-        return  "Usuario: " + this.creador + '\n' +
+        return  "Usuario: " + this.nickname + '\n' +
                 "Ruta: " + this.ruta + '\n'+
                 "Fecha:" + this.fecha;
     }

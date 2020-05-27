@@ -131,7 +131,7 @@ public class Notificacionc extends AppCompatActivity {
                             String creador = aux.getCreador();
                             if (codigo.equals(creador)  )
                             {
-                                aux.setCreador(nickname);
+                                aux.setNickname(nickname);
                                 notificaciones.set(i,aux);
                             }
                         }
