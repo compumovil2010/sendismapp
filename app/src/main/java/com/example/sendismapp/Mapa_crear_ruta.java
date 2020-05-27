@@ -598,7 +598,7 @@ public class Mapa_crear_ruta extends FragmentActivity implements OnMapReadyCallb
             if(nombreArchivo != null && nombreArchivo != "")
             {
                 File file = new File(this.getFilesDir().getAbsolutePath(), nombreArchivo);
-                Log.i("ARCHIVO", "Ubicacion de archivo :" + file);
+                Log.e("ARCHIVO", "Ubicacion de archivo :" + file);
                 output = new BufferedWriter(new FileWriter(file));
                 output.write(marcadores.toString());
                 output.close();

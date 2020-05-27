@@ -53,12 +53,12 @@ public class GuardarRutaJSON extends AppCompatActivity {
         rutas.put(nuevaRuta.toJSON());
         Writer output = null;
         try {
-            File file = new File(this.getFilesDir().getAbsolutePath(), nombreArchivo);
-            Log.i("ARCHIVO", "Ubicacion de archivo :" + file);
+            //File file = new File(this.getFilesDir().getAbsolutePath(), nombreArchivo);
+            File file = new File(this.getCacheDir(), nombreArchivo);
+            Log.e("ARCHIVO", "Ubicacion de archivo :" + file);
             output = new BufferedWriter(new FileWriter(file));
             output.write(rutas.toString());
             output.close();
-            Toast.makeText(getBaseContext(), "Ruta agregada", Toast.LENGTH_LONG).show();
             /*WARNING*/
 
         } catch (Exception e) {
